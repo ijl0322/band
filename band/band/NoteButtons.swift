@@ -8,7 +8,8 @@
 
 import UIKit
 class NoteButtons: UIImageView, UIGestureRecognizerDelegate {
-    var note: Notes!
+    //var note: Notes!
+    var note: TromboneNotes!
     var name: String!
     var tapGestureRecognizer: UITapGestureRecognizer?
     
@@ -18,8 +19,10 @@ class NoteButtons: UIImageView, UIGestureRecognizerDelegate {
     
     init(name: String, x: Double, y: Double) {
         super.init(frame: CGRect(x: x , y: y, width: 100.0, height: 100.0))
-        self.image = UIImage(named: name)
-        self.note = Notes(name: name)
+        let newName = "t_" + name
+        self.image = UIImage(named: newName)
+        //self.note = Notes(name: name)
+        self.note = TromboneNotes(name: name)
         self.name = name
         self.isUserInteractionEnabled = true
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))

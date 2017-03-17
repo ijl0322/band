@@ -12,9 +12,9 @@ import AVFoundation
 class ViewController: UIViewController {
     var D_ap:AVAudioPlayer!
     var note: Notes?
-    var Do_note = Notes(name: "Do")
-    var Re_note = Notes(name: "Re")
-    var Mi_note = Notes(name: "Mi")
+//    var Do_note = Notes(name: "Do")
+//    var Re_note = Notes(name: "Re")
+//    var Mi_note = Notes(name: "Mi")
     var Do_Button: NoteButtons?
     var Re_Button: NoteButtons?
     var Mi_Button: NoteButtons?

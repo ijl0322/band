@@ -7,19 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E3673FC1E7C74D7004C4E9F /* TromboneNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3673FB1E7C74D7004C4E9F /* TromboneNotes.swift */; };
 		0EEBC1321E7B4B8400E473D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBC1311E7B4B8400E473D0 /* AppDelegate.swift */; };
 		0EEBC1341E7B4B8400E473D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBC1331E7B4B8400E473D0 /* ViewController.swift */; };
 		0EEBC1371E7B4B8400E473D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EEBC1351E7B4B8400E473D0 /* Main.storyboard */; };
 		0EEBC1391E7B4B8400E473D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EEBC1381E7B4B8400E473D0 /* Assets.xcassets */; };
 		0EEBC13C1E7B4B8400E473D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EEBC13A1E7B4B8400E473D0 /* LaunchScreen.storyboard */; };
 		0EEBC1441E7B4CE500E473D0 /* Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBC1431E7B4CE500E473D0 /* Notes.swift */; };
-		0EEBC1481E7B4DE300E473D0 /* Do.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0EEBC1451E7B4DE300E473D0 /* Do.mp3 */; };
-		0EEBC1491E7B4DE300E473D0 /* Re.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0EEBC1461E7B4DE300E473D0 /* Re.mp3 */; };
-		0EEBC14A1E7B4DE300E473D0 /* Mi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0EEBC1471E7B4DE300E473D0 /* Mi.mp3 */; };
+		0EEBC1481E7B4DE300E473D0 /* t_Do.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0EEBC1451E7B4DE300E473D0 /* t_Do.mp3 */; };
+		0EEBC1491E7B4DE300E473D0 /* t_Re.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0EEBC1461E7B4DE300E473D0 /* t_Re.mp3 */; };
+		0EEBC14A1E7B4DE300E473D0 /* t_Mi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0EEBC1471E7B4DE300E473D0 /* t_Mi.mp3 */; };
 		0EEBC14C1E7B62D400E473D0 /* NoteButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBC14B1E7B62D400E473D0 /* NoteButtons.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E3673FB1E7C74D7004C4E9F /* TromboneNotes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TromboneNotes.swift; sourceTree = "<group>"; };
 		0EEBC12E1E7B4B8400E473D0 /* band.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = band.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EEBC1311E7B4B8400E473D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0EEBC1331E7B4B8400E473D0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -28,9 +30,9 @@
 		0EEBC13B1E7B4B8400E473D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0EEBC13D1E7B4B8400E473D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0EEBC1431E7B4CE500E473D0 /* Notes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
-		0EEBC1451E7B4DE300E473D0 /* Do.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Do.mp3; sourceTree = "<group>"; };
-		0EEBC1461E7B4DE300E473D0 /* Re.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Re.mp3; sourceTree = "<group>"; };
-		0EEBC1471E7B4DE300E473D0 /* Mi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Mi.mp3; sourceTree = "<group>"; };
+		0EEBC1451E7B4DE300E473D0 /* t_Do.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = t_Do.mp3; sourceTree = "<group>"; };
+		0EEBC1461E7B4DE300E473D0 /* t_Re.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = t_Re.mp3; sourceTree = "<group>"; };
+		0EEBC1471E7B4DE300E473D0 /* t_Mi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = t_Mi.mp3; sourceTree = "<group>"; };
 		0EEBC14B1E7B62D400E473D0 /* NoteButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteButtons.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,11 +71,12 @@
 				0EEBC1351E7B4B8400E473D0 /* Main.storyboard */,
 				0EEBC1431E7B4CE500E473D0 /* Notes.swift */,
 				0EEBC14B1E7B62D400E473D0 /* NoteButtons.swift */,
+				0E3673FB1E7C74D7004C4E9F /* TromboneNotes.swift */,
 				0EEBC1381E7B4B8400E473D0 /* Assets.xcassets */,
 				0EEBC13A1E7B4B8400E473D0 /* LaunchScreen.storyboard */,
-				0EEBC1451E7B4DE300E473D0 /* Do.mp3 */,
-				0EEBC1461E7B4DE300E473D0 /* Re.mp3 */,
-				0EEBC1471E7B4DE300E473D0 /* Mi.mp3 */,
+				0EEBC1451E7B4DE300E473D0 /* t_Do.mp3 */,
+				0EEBC1461E7B4DE300E473D0 /* t_Re.mp3 */,
+				0EEBC1471E7B4DE300E473D0 /* t_Mi.mp3 */,
 				0EEBC13D1E7B4B8400E473D0 /* Info.plist */,
 			);
 			path = band;
@@ -138,11 +141,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0EEBC14A1E7B4DE300E473D0 /* Mi.mp3 in Resources */,
+				0EEBC14A1E7B4DE300E473D0 /* t_Mi.mp3 in Resources */,
 				0EEBC13C1E7B4B8400E473D0 /* LaunchScreen.storyboard in Resources */,
-				0EEBC1491E7B4DE300E473D0 /* Re.mp3 in Resources */,
+				0EEBC1491E7B4DE300E473D0 /* t_Re.mp3 in Resources */,
 				0EEBC1391E7B4B8400E473D0 /* Assets.xcassets in Resources */,
-				0EEBC1481E7B4DE300E473D0 /* Do.mp3 in Resources */,
+				0EEBC1481E7B4DE300E473D0 /* t_Do.mp3 in Resources */,
 				0EEBC1371E7B4B8400E473D0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -157,6 +160,7 @@
 				0EEBC1341E7B4B8400E473D0 /* ViewController.swift in Sources */,
 				0EEBC14C1E7B62D400E473D0 /* NoteButtons.swift in Sources */,
 				0EEBC1321E7B4B8400E473D0 /* AppDelegate.swift in Sources */,
+				0E3673FC1E7C74D7004C4E9F /* TromboneNotes.swift in Sources */,
 				0EEBC1441E7B4CE500E473D0 /* Notes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -319,6 +323,7 @@
 				0EEBC1421E7B4B8400E473D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
