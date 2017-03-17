@@ -16,7 +16,7 @@ class Notes {
     
     required init(name: String) {
         self.name = name
-        let audioFileURL = URL(fileURLWithPath: Bundle.main.path(forResource: "Re", ofType: "mp3")!)
+        let audioFileURL = URL(fileURLWithPath: Bundle.main.path(forResource: name, ofType: "mp3")!)
         
         do {
             try audioFile = AVAudioPlayer(contentsOf: audioFileURL as URL, fileTypeHint: nil)

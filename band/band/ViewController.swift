@@ -11,8 +11,12 @@ import AVFoundation
 
 class ViewController: UIViewController {
     var D_ap:AVAudioPlayer!
-    var player1: Player!
     var note: Notes?
+    var Do_note = Notes(name: "Do")
+    var Re_note = Notes(name: "Re")
+    var Mi_note = Notes(name: "Mi")
+    var Do_Button: NoteButtons?
+    
     @IBAction func myButton(_ sender: UIButton) {
         note = Notes(name: "Mi")
         note?.playNote()
@@ -26,11 +30,15 @@ class ViewController: UIViewController {
         Do.isUserInteractionEnabled = true
         Re.isUserInteractionEnabled = true
         Me.isUserInteractionEnabled = true
-        player1 = Player()
+        Do_Button = NoteButtons(name: "Do", x: 100.0, y: 100.0)
         
+        Do_Button?.backgroundColor = UIColor.black
+    
         
+        view.addSubview(Do_Button!)
     }
     
+
     
     
 
