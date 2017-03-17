@@ -10,18 +10,18 @@ import UIKit
 import AVFoundation
 
 class ViewController: UIViewController {
-    var D_ap:AVAudioPlayer!
     var note: Notes?
-//    var Do_note = Notes(name: "Do")
-//    var Re_note = Notes(name: "Re")
-//    var Mi_note = Notes(name: "Mi")
     var Do_Button: NoteButtons?
     var Re_Button: NoteButtons?
     var Mi_Button: NoteButtons?
+    var tromboneSlot: TromboneSlots?
+    var playerQueue: AVQueuePlayer?
+    var song: [AVPlayerItem] = []
     
     @IBAction func myButton(_ sender: UIButton) {
-        note = Notes(name: "Mi")
-        note?.playNote()
+        //note = Notes(name: "Mi")
+        //note?.playNote()
+        playerQueue!.play()
     }
     
     @IBOutlet weak var Me: UIImageView!
@@ -32,10 +32,22 @@ class ViewController: UIViewController {
         Do.isUserInteractionEnabled = true
         Re.isUserInteractionEnabled = true
         Me.isUserInteractionEnabled = true
-        Do_Button = NoteButtons(name: "Do", x: 100.0, y: 100.0)
-        Re_Button = NoteButtons(name: "Re", x: 150.0, y: 150.0)
-        Mi_Button = NoteButtons(name: "Mi", x: 200.0, y: 200.0)
+        Do_Button = TromboneNoteButtons(name: "Do", x: 100.0, y: 100.0)
+        Re_Button = TromboneNoteButtons(name: "Re", x: 150.0, y: 150.0)
+        Mi_Button = TromboneNoteButtons(name: "Mi", x: 200.0, y: 200.0)
+        song = [TromboneNotes(name: "Do").queuePlayerItem, TromboneNotes(name:"Re").queuePlayerItem, TromboneNotes(name: "Mi").queuePlayerItem]
         
+        tromboneSlot = TromboneSlots(x: 200.0, y: 200.0)
+        tromboneSlot?.tag = 1
+        
+        playerQueue = {
+
+            let queue = AVQueuePlayer(items: song)
+            return queue
+        }()
+        
+        
+        view.addSubview(tromboneSlot!)
         view.addSubview(Do_Button!)
         view.addSubview(Re_Button!)
         view.addSubview(Mi_Button!)

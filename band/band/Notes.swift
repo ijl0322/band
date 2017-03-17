@@ -13,10 +13,12 @@ import AVFoundation
 class Notes {
     let name: String
     var audioFile: AVAudioPlayer!
+    var queuePlayerItem: AVPlayerItem!
     
     required init(name: String) {
         self.name = name
         let audioFileURL = URL(fileURLWithPath: Bundle.main.path(forResource: name, ofType: "mp3")!)
+        queuePlayerItem = AVPlayerItem(url: audioFileURL)
         
         do {
             try audioFile = AVAudioPlayer(contentsOf: audioFileURL as URL, fileTypeHint: nil)
