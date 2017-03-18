@@ -17,7 +17,7 @@ class Notes {
     
     required init(name: String) {
         self.name = name
-        let audioFileURL = URL(fileURLWithPath: Bundle.main.path(forResource: name, ofType: "mp3")!)
+        let audioFileURL = URL(fileURLWithPath: Bundle.main.path(forResource: name, ofType: "wav")!)
         queuePlayerItem = AVPlayerItem(url: audioFileURL)
         
         do {
