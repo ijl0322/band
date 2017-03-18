@@ -16,12 +16,15 @@ class ViewController: UIViewController {
     var Mi_Button: NoteButtons?
     var tromboneSlot: TromboneSlots?
     var playerQueue: AVQueuePlayer?
+    var playerQueue2: AVQueuePlayer?
     var song: [AVPlayerItem] = []
+    var song2: [AVPlayerItem] = []
     
     @IBAction func myButton(_ sender: UIButton) {
         //note = Notes(name: "Mi")
         //note?.playNote()
         playerQueue!.play()
+        playerQueue2!.play()
     }
     
     @IBOutlet weak var Me: UIImageView!
@@ -36,6 +39,7 @@ class ViewController: UIViewController {
         Re_Button = TromboneNoteButtons(name: "Re", x: 150.0, y: 150.0)
         Mi_Button = TromboneNoteButtons(name: "Mi", x: 200.0, y: 200.0)
         song = [TromboneNotes(name: "Do").queuePlayerItem, TromboneNotes(name:"Re").queuePlayerItem, TromboneNotes(name: "Mi").queuePlayerItem]
+        song2 = [TromboneNotes(name: "Mi").queuePlayerItem, TromboneNotes(name:"Re").queuePlayerItem, TromboneNotes(name: "Do").queuePlayerItem]
         
         tromboneSlot = TromboneSlots(x: 200.0, y: 200.0)
         tromboneSlot?.tag = 1
@@ -46,6 +50,11 @@ class ViewController: UIViewController {
             return queue
         }()
         
+        playerQueue2 = {
+            
+            let queue = AVQueuePlayer(items: song2)
+            return queue
+        }()
         
         view.addSubview(tromboneSlot!)
         view.addSubview(Do_Button!)
