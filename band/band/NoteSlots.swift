@@ -18,6 +18,8 @@ class NoteSlots: UIImageView {
     
     init(x: Double, y: Double) {
         super.init(frame: CGRect(x: x , y: y, width: 110.0, height: 110.0))
+        self.layer.borderWidth = 3
+        self.layer.borderColor = UIColor.darkGray.cgColor
         self.instrument = Instruments.None
     }
 }

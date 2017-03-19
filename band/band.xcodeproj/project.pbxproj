@@ -21,11 +21,14 @@
 		0E2150911E7DC8F30011497F /* t_So_h.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0E2150901E7DC8F30011497F /* t_So_h.wav */; };
 		0E2150931E7DC8FA0011497F /* t_La_h.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0E2150921E7DC8FA0011497F /* t_La_h.wav */; };
 		0E2150951E7DC9040011497F /* t_Ti_h.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0E2150941E7DC9040011497F /* t_Ti_h.wav */; };
+		0E2150971E7DE57C0011497F /* ComposedNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2150961E7DE57C0011497F /* ComposedNotes.swift */; };
+		0E2150991E7DE62D0011497F /* t_None.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0E2150981E7DE62D0011497F /* t_None.wav */; };
 		0E3673FC1E7C74D7004C4E9F /* TromboneNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3673FB1E7C74D7004C4E9F /* TromboneNotes.swift */; };
 		0E3673FE1E7C7838004C4E9F /* TromboneNoteButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3673FD1E7C7838004C4E9F /* TromboneNoteButtons.swift */; };
 		0E3674001E7C7B57004C4E9F /* NoteSlots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3673FF1E7C7B57004C4E9F /* NoteSlots.swift */; };
 		0E3674021E7C7D90004C4E9F /* TromboneSlots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3674011E7C7D90004C4E9F /* TromboneSlots.swift */; };
 		0E3674041E7C8097004C4E9F /* Instruments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3674031E7C8097004C4E9F /* Instruments.swift */; };
+		0E691DC01E7F14E7000B761A /* EditPannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E691DBF1E7F14E7000B761A /* EditPannel.swift */; };
 		0EEBC1321E7B4B8400E473D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBC1311E7B4B8400E473D0 /* AppDelegate.swift */; };
 		0EEBC1341E7B4B8400E473D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBC1331E7B4B8400E473D0 /* ViewController.swift */; };
 		0EEBC1371E7B4B8400E473D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EEBC1351E7B4B8400E473D0 /* Main.storyboard */; };
@@ -53,11 +56,14 @@
 		0E2150901E7DC8F30011497F /* t_So_h.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = t_So_h.wav; sourceTree = "<group>"; };
 		0E2150921E7DC8FA0011497F /* t_La_h.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = t_La_h.wav; sourceTree = "<group>"; };
 		0E2150941E7DC9040011497F /* t_Ti_h.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = t_Ti_h.wav; sourceTree = "<group>"; };
+		0E2150961E7DE57C0011497F /* ComposedNotes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposedNotes.swift; sourceTree = "<group>"; };
+		0E2150981E7DE62D0011497F /* t_None.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = t_None.wav; sourceTree = "<group>"; };
 		0E3673FB1E7C74D7004C4E9F /* TromboneNotes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TromboneNotes.swift; sourceTree = "<group>"; };
 		0E3673FD1E7C7838004C4E9F /* TromboneNoteButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TromboneNoteButtons.swift; sourceTree = "<group>"; };
 		0E3673FF1E7C7B57004C4E9F /* NoteSlots.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteSlots.swift; sourceTree = "<group>"; };
 		0E3674011E7C7D90004C4E9F /* TromboneSlots.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TromboneSlots.swift; sourceTree = "<group>"; };
 		0E3674031E7C8097004C4E9F /* Instruments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Instruments.swift; sourceTree = "<group>"; };
+		0E691DBF1E7F14E7000B761A /* EditPannel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPannel.swift; sourceTree = "<group>"; };
 		0EEBC12E1E7B4B8400E473D0 /* band.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = band.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EEBC1311E7B4B8400E473D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0EEBC1331E7B4B8400E473D0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +89,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E21509B1E7DE65F0011497F /* TromboneSoundFiles */ = {
+			isa = PBXGroup;
+			children = (
+				0EEBC1451E7B4DE300E473D0 /* t_Do.mp3 */,
+				0EEBC1461E7B4DE300E473D0 /* t_Re.mp3 */,
+				0EEBC1471E7B4DE300E473D0 /* t_Mi.mp3 */,
+				0E21507A1E7DB19F0011497F /* t_Do.wav */,
+				0E21507B1E7DB19F0011497F /* t_Mi.wav */,
+				0E21507C1E7DB19F0011497F /* t_Re.wav */,
+				0E2150801E7DC8AC0011497F /* t_Fa.wav */,
+				0E2150821E7DC8B50011497F /* t_So.wav */,
+				0E2150841E7DC8BB0011497F /* t_La.wav */,
+				0E2150861E7DC8C20011497F /* t_Ti.wav */,
+				0E2150881E7DC8D50011497F /* t_Do_h.wav */,
+				0E21508A1E7DC8DF0011497F /* t_Re_h.wav */,
+				0E21508C1E7DC8E50011497F /* t_Mi_h.wav */,
+				0E21508E1E7DC8EC0011497F /* t_Fa_h.wav */,
+				0E2150901E7DC8F30011497F /* t_So_h.wav */,
+				0E2150921E7DC8FA0011497F /* t_La_h.wav */,
+				0E2150941E7DC9040011497F /* t_Ti_h.wav */,
+				0E2150981E7DE62D0011497F /* t_None.wav */,
+			);
+			name = TromboneSoundFiles;
+			sourceTree = "<group>";
+		};
 		0EEBC1251E7B4B8300E473D0 = {
 			isa = PBXGroup;
 			children = (
@@ -106,31 +137,17 @@
 				0EEBC1331E7B4B8400E473D0 /* ViewController.swift */,
 				0EEBC1351E7B4B8400E473D0 /* Main.storyboard */,
 				0EEBC1431E7B4CE500E473D0 /* Notes.swift */,
+				0E691DBF1E7F14E7000B761A /* EditPannel.swift */,
 				0EEBC14B1E7B62D400E473D0 /* NoteButtons.swift */,
 				0E3673FF1E7C7B57004C4E9F /* NoteSlots.swift */,
+				0E2150961E7DE57C0011497F /* ComposedNotes.swift */,
 				0E3674011E7C7D90004C4E9F /* TromboneSlots.swift */,
 				0E3673FD1E7C7838004C4E9F /* TromboneNoteButtons.swift */,
 				0E3673FB1E7C74D7004C4E9F /* TromboneNotes.swift */,
 				0E3674031E7C8097004C4E9F /* Instruments.swift */,
 				0EEBC1381E7B4B8400E473D0 /* Assets.xcassets */,
 				0EEBC13A1E7B4B8400E473D0 /* LaunchScreen.storyboard */,
-				0EEBC1451E7B4DE300E473D0 /* t_Do.mp3 */,
-				0EEBC1461E7B4DE300E473D0 /* t_Re.mp3 */,
-				0EEBC1471E7B4DE300E473D0 /* t_Mi.mp3 */,
-				0E21507A1E7DB19F0011497F /* t_Do.wav */,
-				0E21507B1E7DB19F0011497F /* t_Mi.wav */,
-				0E21507C1E7DB19F0011497F /* t_Re.wav */,
-				0E2150801E7DC8AC0011497F /* t_Fa.wav */,
-				0E2150821E7DC8B50011497F /* t_So.wav */,
-				0E2150841E7DC8BB0011497F /* t_La.wav */,
-				0E2150861E7DC8C20011497F /* t_Ti.wav */,
-				0E2150881E7DC8D50011497F /* t_Do_h.wav */,
-				0E21508A1E7DC8DF0011497F /* t_Re_h.wav */,
-				0E21508C1E7DC8E50011497F /* t_Mi_h.wav */,
-				0E21508E1E7DC8EC0011497F /* t_Fa_h.wav */,
-				0E2150901E7DC8F30011497F /* t_So_h.wav */,
-				0E2150921E7DC8FA0011497F /* t_La_h.wav */,
-				0E2150941E7DC9040011497F /* t_Ti_h.wav */,
+				0E21509B1E7DE65F0011497F /* TromboneSoundFiles */,
 				0EEBC13D1E7B4B8400E473D0 /* Info.plist */,
 			);
 			path = band;
@@ -203,6 +220,7 @@
 				0EEBC1491E7B4DE300E473D0 /* t_Re.mp3 in Resources */,
 				0E21508D1E7DC8E50011497F /* t_Mi_h.wav in Resources */,
 				0EEBC1391E7B4B8400E473D0 /* Assets.xcassets in Resources */,
+				0E2150991E7DE62D0011497F /* t_None.wav in Resources */,
 				0E2150931E7DC8FA0011497F /* t_La_h.wav in Resources */,
 				0E2150831E7DC8B50011497F /* t_So.wav in Resources */,
 				0EEBC1481E7B4DE300E473D0 /* t_Do.mp3 in Resources */,
@@ -228,7 +246,9 @@
 				0EEBC1341E7B4B8400E473D0 /* ViewController.swift in Sources */,
 				0E3674021E7C7D90004C4E9F /* TromboneSlots.swift in Sources */,
 				0EEBC14C1E7B62D400E473D0 /* NoteButtons.swift in Sources */,
+				0E2150971E7DE57C0011497F /* ComposedNotes.swift in Sources */,
 				0EEBC1321E7B4B8400E473D0 /* AppDelegate.swift in Sources */,
+				0E691DC01E7F14E7000B761A /* EditPannel.swift in Sources */,
 				0E3674001E7C7B57004C4E9F /* NoteSlots.swift in Sources */,
 				0E3673FC1E7C74D7004C4E9F /* TromboneNotes.swift in Sources */,
 				0EEBC1441E7B4CE500E473D0 /* Notes.swift in Sources */,
