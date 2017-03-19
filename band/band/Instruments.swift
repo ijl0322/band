@@ -10,5 +10,7 @@ import Foundation
 
 enum Instruments {
     case Trombone
+    case Saxphone
+    case Drum
     case None
 }

@@ -20,24 +20,25 @@ class ComposedNotes {
     init(tNoteName: String = "None", sNoteName: String = "None", dNoteName: String = "None") {
         tNote = TromboneNotes(name: tNoteName)
         sNote = TromboneNotes(name: sNoteName)
-        dNote = TromboneNotes(name: dNoteName)
+        dNote = DrumNotes(name: dNoteName)
     }
     
     func addTNote(note: String) {
         tNote = TromboneNotes(name: note)
     }
     
-    func addCNote(note: String) {
+    func addSNote(note: String) {
         sNote = TromboneNotes(name: note)
     }
     
     func addDNote(note: String) {
-        dNote = TromboneNotes(name: note)
+        dNote = DrumNotes(name: note)
     }
     
     func playSong() {
         tNote.playNote()
         sNote.playNote()
+        dNote.playNote()
         if let nextNote = self.next {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.6){
                 print("playing next")
