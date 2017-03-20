@@ -8,7 +8,7 @@
 
 import UIKit
 class NoteButtons: UIImageView, UIGestureRecognizerDelegate {
-    let size = 100.0
+    let size = 70.0
     var note: Notes!
     var instrument: Instruments!
     var name: String!

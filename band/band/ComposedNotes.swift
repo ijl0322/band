@@ -6,11 +6,8 @@
 //  Copyright © 2017 Isabel  Lee. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
-
-//Need to change S note to Saxphone, D to Drum
 class ComposedNotes {
     var tNote: Notes
     var sNote: Notes
@@ -43,7 +40,7 @@ class ComposedNotes {
         sNote.playNote()
         dNote.playNote()
         if let nextNote = self.next {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.15){
                 print("playing next")
                 nextNote.playSong()
             }
