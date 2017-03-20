@@ -20,6 +20,7 @@ class EditPannel: UIView {
     init(){
         super.init(frame: CGRect(x: 0.0 , y: 0.0, width: 1366.0, height: 1024.0))
         self.backgroundColor = UIColor.black
+        
         addTromboneSlots()
         addSaxphoneSlots()
         addDrumSlots()
@@ -27,15 +28,7 @@ class EditPannel: UIView {
         addDrumButtons()
         addSaxphoneButtons()
         addComposedNotes()
-        let button: UIButton = UIButton(frame: CGRect(x: 375.0 + 127.0 , y: 450.0, width: 120.0, height: 50.0))
-        button.backgroundColor = UIColor.white
-        button.addTarget(self, action: #selector(playButton(_:)), for: UIControlEvents.touchUpInside)
-        self.addSubview(button)
-        
-        let button2: UIButton = UIButton(frame: CGRect(x: 375.0 + 127.0 , y: 500.0, width: 120.0, height: 50.0))
-        button2.backgroundColor = UIColor.red
-        button2.addTarget(self, action: #selector(clearSongButton(_:)), for: UIControlEvents.touchUpInside)
-        self.addSubview(button2)
+        addPlayAndClear()
         
     }
     
@@ -50,6 +43,19 @@ class EditPannel: UIView {
     
     func clearSongButton(_ button: UIButton!) {
         clearAll()
+    }
+    
+    func addPlayAndClear() {
+        let button: UIButton = UIButton(frame: CGRect(x: 500.0 , y: 450.0, width: 120.0, height: 50.0))
+        button.backgroundColor = UIColor.white
+        button.addTarget(self, action: #selector(playButton(_:)), for: UIControlEvents.touchUpInside)
+        self.addSubview(button)
+        
+        let button2: UIButton = UIButton(frame: CGRect(x: 500.0 + 127.0 , y: 500.0, width: 120.0, height: 50.0))
+        button2.backgroundColor = UIColor.red
+        button2.addTarget(self, action: #selector(clearSongButton(_:)), for: UIControlEvents.touchUpInside)
+        self.addSubview(button2)
+        
     }
     
     func addTromboneSlots() {
