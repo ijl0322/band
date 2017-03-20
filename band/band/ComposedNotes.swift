@@ -15,11 +15,14 @@ class ComposedNotes {
     var tNote: Notes
     var sNote: Notes
     var dNote: Notes
+    var tNone = TromboneNotes(name: "None")
+    var sNone = SaxphoneNotes(name: "None")
+    var dNone = DrumNotes(name: "None")
     var next: ComposedNotes?
     
     init(tNoteName: String = "None", sNoteName: String = "None", dNoteName: String = "None") {
         tNote = TromboneNotes(name: tNoteName)
-        sNote = TromboneNotes(name: sNoteName)
+        sNote = SaxphoneNotes(name: sNoteName)
         dNote = DrumNotes(name: dNoteName)
     }
     
@@ -28,7 +31,7 @@ class ComposedNotes {
     }
     
     func addSNote(note: String) {
-        sNote = TromboneNotes(name: note)
+        sNote = SaxphoneNotes(name: note)
     }
     
     func addDNote(note: String) {
@@ -45,5 +48,11 @@ class ComposedNotes {
                 nextNote.playSong()
             }
         }
+    }
+    
+    func clearNote() {
+        tNote = tNone
+        dNote = dNone
+        sNote = sNone
     }
 }

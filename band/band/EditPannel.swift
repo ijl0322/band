@@ -29,6 +29,11 @@ class EditPannel: UIView {
         button.addTarget(self, action: #selector(buttonTapped), for: UIControlEvents.touchUpInside)
         self.addSubview(button)
         
+        let button2: UIButton = UIButton(frame: CGRect(x: 375.0 + 127.0 , y: 500.0, width: 120.0, height: 50.0))
+        button2.backgroundColor = UIColor.red
+        button2.addTarget(self, action: #selector(buttonTapped2), for: UIControlEvents.touchUpInside)
+        self.addSubview(button2)
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -39,6 +44,12 @@ class EditPannel: UIView {
     func buttonTapped(_ button: UIButton!) {
         composedNoteList[0].playSong()
     }
+    
+    func buttonTapped2(_ button: UIButton!) {
+        clearAll()
+    }
+    
+    
     
     func addTromboneSlots() {
         for i in 0...numSlots {
@@ -58,7 +69,7 @@ class EditPannel: UIView {
     
     func addSaxphoneSlots() {
         for i in 0...numSlots {
-            let newSlot = TromboneSlots(x: Double(i)*110.0, y: 240.0)
+            let newSlot = SaxphoneSlots(x: Double(i)*110.0, y: 240.0)
             newSlot.tag = i + 300
             self.addSubview(newSlot)
         }
@@ -127,7 +138,7 @@ class EditPannel: UIView {
         
         if recognizer.state == UIGestureRecognizerState.ended {
             
-            for i in 0...12{
+            for i in 0...numSlots{
                 handleMove(imgTag: typeTag + i, recognizer: recognizer)
             }
             NoteButton.center = CGPoint(x: NoteButton.originalX, y: NoteButton.originalY)
@@ -164,6 +175,22 @@ class EditPannel: UIView {
             }
         }
             
+    }
+    
+    func clearAll() {
+        for i in 0...numSlots {
+            if let slot = self.viewWithTag(i + 100) as? NoteSlots{
+                slot.image = nil
+            }
+            if let slot = self.viewWithTag(i + 200) as? NoteSlots{
+                slot.image = nil
+            }
+            if let slot = self.viewWithTag(i + 300) as? NoteSlots{
+                slot.image = nil
+            }
+            composedNoteList[i].clearNote()
+        }
+        
     }
 
     
