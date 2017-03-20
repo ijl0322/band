@@ -40,7 +40,7 @@ class ComposedNotes {
         sNote.playNote()
         dNote.playNote()
         if let nextNote = self.next {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6){
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
                 print("playing next")
                 nextNote.playSong()
             }

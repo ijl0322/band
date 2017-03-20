@@ -10,10 +10,11 @@ import UIKit
 
 class DrumSlots: NoteSlots {
     
-    let green = UIColor(red: 184/255, green: 237/255, blue: 111/255, alpha: 1)
+    //let green = UIColor(red: 184/255, green: 237/255, blue: 111/255, alpha: 1)
+    let purple = UIColor(red: 222/255, green: 172/255, blue: 249/255, alpha: 1)
     override required init(x: Double, y: Double) {
         super.init(x: x, y: y)
-        self.backgroundColor = green
+        self.backgroundColor = purple
         self.instrument = Instruments.Drum
     }
     
