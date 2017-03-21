@@ -12,7 +12,7 @@ import UIKit
 class EditPannel: UIView {
     let allNotes = ["Do", "Re", "Mi", "Fa", "So", "La", "Ti", "Do_h", "Re_h", "Mi_h", "Fa_h", "So_h", "La_h", "Ti_h"]
     let allDrumNotes = ["single", "double", "triple"]
-    let numSlots = 20
+    let numSlots = 19
     var isMenuHidden = false
     var composedNoteList: [ComposedNotes] = []
     var tromboneButtons: [TromboneNoteButtons] = []
@@ -142,13 +142,14 @@ class EditPannel: UIView {
     }
     
     func addComposedNotes() {
-        for _ in 0...numSlots{
-            let newComposedNote = ComposedNotes()
-            if let lastElement = composedNoteList.last {
-                lastElement.next = newComposedNote
-            }
-            composedNoteList.append(newComposedNote)
-        }
+//        for _ in 0...numSlots{
+//            let newComposedNote = ComposedNotes()
+//            if let lastElement = composedNoteList.last {
+//                lastElement.next = newComposedNote
+//            }
+//            composedNoteList.append(newComposedNote)
+//        }
+        composedNoteList = Songs().odeToJoy()
     }
     
     func addTromboneButtons() {

@@ -11,7 +11,7 @@ import AVFoundation
 
 class ViewController: UIViewController {
 
-    //let editPannel = EditPannel()
+    let editPannel = EditPannel()
     let band = Band()
     let playButton = UIButton(frame: CGRect(x: 0.0 , y: 0.0, width: 120.0, height: 50.0))
     var notes: [ComposedNotes] = []
@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //view.addSubview(editPannel)
+        view.addSubview(editPannel)
         view.addSubview(band)
         addButtons()
     }
@@ -34,8 +34,9 @@ class ViewController: UIViewController {
     
     func playButton(_ button: UIButton!) {
         
-        notes = Songs().odeToJoy()
-        notes[0].playSong()
+        //notes = Songs().odeToJoy()
+        //notes[0].playSong()
+        editPannel.playSong()
         band.startBand()
     }
     
