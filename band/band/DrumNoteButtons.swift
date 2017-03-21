@@ -14,7 +14,6 @@ class DrumNoteButtons: NoteButtons {
     required override init(name: String, x: Double, y: Double) {
         super.init(name: name, x: x, y: y)
         self.fullName = "d_" + name
-        self.note = DrumNotes(name: name)
         self.image = UIImage(named: self.fullName)
         self.instrument = Instruments.Drum
     }

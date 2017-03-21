@@ -1,21 +1,22 @@
 //
-//  Notes.swift
+//  SharedAudioPlayer.swift
 //  band
 //
-//  Created by Isabel  Lee on 16/03/2017.
+//  Created by Isabel  Lee on 21/03/2017.
 //  Copyright © 2017 Isabel  Lee. All rights reserved.
 //
 
-import Foundation
-import UIKit
 import AVFoundation
-
-class Notes {
-    let name: String
+class SharedAudioPlayer {
+    
+    // Static class variable
+    static let player = SharedAudioPlayer()
     var audioFile: AVAudioPlayer!
     
-    required init(name: String) {
-        self.name = name
+    /// This prevents others from using the default '()' initializer for this class.
+    private init() {}
+    
+    func playNote(name: String) {
         let audioFileURL = URL(fileURLWithPath: Bundle.main.path(forResource: name, ofType: "wav")!)
         
         do {
@@ -24,10 +25,7 @@ class Notes {
         } catch let err as NSError {
             print(err.debugDescription)
         }
-        
-    }
-    
-    func playNote() {
         audioFile.play()
     }
+
 }

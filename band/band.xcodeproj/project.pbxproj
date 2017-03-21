@@ -57,6 +57,7 @@
 		0E691DCB1E7F4A62000B761A /* DrumNoteButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E691DCA1E7F4A62000B761A /* DrumNoteButtons.swift */; };
 		0E691DCD1E7F4A9C000B761A /* DrumSlots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E691DCC1E7F4A9C000B761A /* DrumSlots.swift */; };
 		0E691DCF1E7F4B7D000B761A /* d_None.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0E691DCE1E7F4B7D000B761A /* d_None.wav */; };
+		0E9D96E11E81CD1200EAC043 /* SharedAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9D96E01E81CD1200EAC043 /* SharedAudioPlayer.swift */; };
 		0EEBC1321E7B4B8400E473D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBC1311E7B4B8400E473D0 /* AppDelegate.swift */; };
 		0EEBC1341E7B4B8400E473D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBC1331E7B4B8400E473D0 /* ViewController.swift */; };
 		0EEBC1371E7B4B8400E473D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EEBC1351E7B4B8400E473D0 /* Main.storyboard */; };
@@ -120,6 +121,7 @@
 		0E691DCA1E7F4A62000B761A /* DrumNoteButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrumNoteButtons.swift; sourceTree = "<group>"; };
 		0E691DCC1E7F4A9C000B761A /* DrumSlots.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrumSlots.swift; sourceTree = "<group>"; };
 		0E691DCE1E7F4B7D000B761A /* d_None.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = d_None.wav; sourceTree = "<group>"; };
+		0E9D96E01E81CD1200EAC043 /* SharedAudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedAudioPlayer.swift; sourceTree = "<group>"; };
 		0EEBC12E1E7B4B8400E473D0 /* band.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = band.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EEBC1311E7B4B8400E473D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0EEBC1331E7B4B8400E473D0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 				0E3674031E7C8097004C4E9F /* Instruments.swift */,
 				0E274B8B1E807C970050E394 /* Size.swift */,
 				0E0B62F11E81B96600EE5B80 /* Songs.swift */,
+				0E9D96E01E81CD1200EAC043 /* SharedAudioPlayer.swift */,
 				0EEBC1381E7B4B8400E473D0 /* Assets.xcassets */,
 				0EEBC13A1E7B4B8400E473D0 /* LaunchScreen.storyboard */,
 				0E274B881E7F7C5C0050E394 /* SaxphoneSoundFiles */,
@@ -363,6 +366,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E0B62F21E81B96600EE5B80 /* Songs.swift in Sources */,
+				0E9D96E11E81CD1200EAC043 /* SharedAudioPlayer.swift in Sources */,
 				0EEBC1341E7B4B8400E473D0 /* ViewController.swift in Sources */,
 				0E3674021E7C7D90004C4E9F /* TromboneSlots.swift in Sources */,
 				0EEBC14C1E7B62D400E473D0 /* NoteButtons.swift in Sources */,

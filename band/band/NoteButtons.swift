@@ -9,7 +9,6 @@
 import UIKit
 class NoteButtons: UIImageView, UIGestureRecognizerDelegate {
     let noteSize = size.noteSize.rawValue
-    var note: Notes!
     var instrument: Instruments!
     var name: String!
     var fullName: String!
@@ -35,7 +34,7 @@ class NoteButtons: UIImageView, UIGestureRecognizerDelegate {
     }
     
     func handleTap(_: UITapGestureRecognizer){
-        self.note.playNote()
+        SharedAudioPlayer.player.playNote(name: fullName)
     }
     
 }

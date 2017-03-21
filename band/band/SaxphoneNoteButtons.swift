@@ -14,7 +14,6 @@ class SaxphoneNoteButtons: NoteButtons {
     required override init(name: String, x: Double, y: Double) {
         super.init(name: name, x: x, y: y)
         self.fullName = "s_" + name
-        self.note = SaxphoneNotes(name: name)
         self.image = UIImage(named: self.fullName)
         self.instrument = Instruments.Saxphone
     }
