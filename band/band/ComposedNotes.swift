@@ -8,7 +8,12 @@
 
 import UIKit
 
+protocol MusicStatusDelegate: class {
+    func musicEnded()
+}
+
 class ComposedNotes {
+    weak var delegate: MusicStatusDelegate?
     var tNote: Notes
     var sNote: Notes
     var dNote: Notes
@@ -44,6 +49,9 @@ class ComposedNotes {
                 print("playing next")
                 nextNote.playSong()
             }
+        } else {
+            delegate?.musicEnded()
+            print("song ended")
         }
     }
     

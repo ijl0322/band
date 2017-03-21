@@ -9,7 +9,9 @@
 import Foundation
 import UIKit
 
+
 class EditPannel: UIView {
+    
     let allNotes = ["Do", "Re", "Mi", "Fa", "So", "La", "Ti", "Do_h", "Re_h", "Mi_h", "Fa_h", "So_h", "La_h", "Ti_h"]
     let allDrumNotes = ["single", "double", "triple"]
     let numSlots = 19
@@ -25,7 +27,6 @@ class EditPannel: UIView {
     
     init(){
         super.init(frame: CGRect(x: 0.0 , y: 0.0, width: size.screenWidth.rawValue, height: size.screenHeight.rawValue))
-        //self.backgroundColor = UIColor.black
         
         addTromboneSlots()
         addSaxphoneSlots()
@@ -146,13 +147,6 @@ class EditPannel: UIView {
     }
     
     func addComposedNotes() {
-//        for _ in 0...numSlots{
-//            let newComposedNote = ComposedNotes()
-//            if let lastElement = composedNoteList.last {
-//                lastElement.next = newComposedNote
-//            }
-//            composedNoteList.append(newComposedNote)
-//        }
         composedNoteList = song.odeToJoy()
     }
     
@@ -358,7 +352,6 @@ class EditPannel: UIView {
             break
         }
     }
-
 
 }
 

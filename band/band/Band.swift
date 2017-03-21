@@ -23,35 +23,11 @@ class Band: UIView {
         //self.backgroundColor = UIColor.red
         addBunnies()
         addSpotlight()
-        addButtons()
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func addButtons() {
-        let playButton: UIButton = UIButton(frame: CGRect(x: 0.0 , y: 0.0, width: 120.0, height: 50.0))
-        playButton.backgroundColor = UIColor.white
-        playButton.setTitle("Play", for: UIControlState.normal)
-        playButton.addTarget(self, action: #selector(playButton(_:)), for: UIControlEvents.touchUpInside)
-        self.addSubview(playButton)
-        
-        let clearButton: UIButton = UIButton(frame: CGRect(x: 0, y: 50.0, width: 120.0, height: 50.0))
-        clearButton.backgroundColor = UIColor.red
-        playButton.setTitle("Stop", for: UIControlState.normal)
-        clearButton.addTarget(self, action: #selector(stopButton(_:)), for: UIControlEvents.touchUpInside)
-        self.addSubview(clearButton)
-        
-    }
-    
-    func playButton(_ button: UIButton!) {
-        startBand()
-    }
-    
-    
-    func stopButton(_ button: UIButton!) {
-        stopAllAnimation()
     }
     
     func startBand() {
@@ -122,15 +98,20 @@ class Band: UIView {
     }
     
     func stopAllAnimation(){
-        leftLight.alpha = 0
-        rightLight.alpha = 0
+        
         leftLight.transform = CGAffineTransform(rotationAngle: (0.0 * CGFloat(M_PI)) / 180.0)
         rightLight.transform = CGAffineTransform(rotationAngle: (0.0 * CGFloat(M_PI)) / 180.0)
+        UIView.animate(withDuration: 6, animations: {
+            self.leftLight.alpha = 0
+            self.rightLight.alpha = 0
+        }, completion: { (finish: Bool) in
+            self.leftLight.layer.removeAllAnimations()
+            self.rightLight.layer.removeAllAnimations()
+        })
+        
         drumBunny.layer.removeAllAnimations()
         saxphoneBunny.layer.removeAllAnimations()
         tromboneBunny.layer.removeAllAnimations()
-        leftLight.layer.removeAllAnimations()
-        rightLight.layer.removeAllAnimations()
     }
     
     func rotateWithAnchor(image: UIView, anchorX: Double, anchorY: Double, fromAngle: Double, toAngle: Double){
