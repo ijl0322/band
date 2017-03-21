@@ -68,48 +68,36 @@ class Band: UIView {
         leftlight.image = UIImage(named: "light_l")
         leftlight.alpha = 0.6
         self.addSubview(leftlight)
-        setAnchorPoint(anchorPoint: CGPoint(x: 0, y: 0), view: leftlight)
-        if #available(iOS 10.0, *) {
-            let rotationInDegrees = Measurement(value: 45, unit: UnitAngle.degrees)
-            let rotationInRadians = CGFloat(rotationInDegrees.converted(to: .radians).value)
-            let transform = CATransform3DMakeRotation(rotationInRadians, 0, 0.0, 1.0)
-            leftlight.layer.transform = transform
-    
-            let animation = CABasicAnimation(keyPath: "transform")
-            animation.fromValue = NSValue(caTransform3D: CATransform3DMakeRotation(CGFloat(Measurement(value: 0, unit: UnitAngle.degrees).converted(to: .radians).value), 0, 0.0, 1.0))
-            animation.toValue = NSValue(caTransform3D: CATransform3DMakeRotation(CGFloat(Measurement(value: -20, unit: UnitAngle.degrees).converted(to: .radians).value), 0, 0.0, 1.0))
-            animation.duration = 2.0
-            animation.repeatCount = Float.infinity
-            animation.autoreverses = true
-            leftlight.layer.add(animation, forKey: nil)
-        } else {
-            // Fallback on earlier versions
-        }
-        
+        rotateWithAnchor(image: leftlight, anchorX: 0.0, anchorY: 0.0, fromAngle: 0.0, toAngle: -20.0)
+
         
         // Add right spotlight
         let rightlight = UIImageView(frame: CGRect(x: 400.0 , y: 0.0, width: 400.0, height: 600.0))
         rightlight.image = UIImage(named: "light_r")
         rightlight.alpha = 0.6
         self.addSubview(rightlight)
-        setAnchorPoint(anchorPoint: CGPoint(x: 1, y: 0), view: rightlight)
+        rotateWithAnchor(image: rightlight, anchorX: 1.0, anchorY: 0.0, fromAngle: 0.0, toAngle: 20.0)
+    }
+    
+    func rotateWithAnchor(image: UIView, anchorX: Double, anchorY: Double, fromAngle: Double, toAngle: Double){
+        setAnchorPoint(anchorPoint: CGPoint(x: anchorX, y: anchorY), view: image)
         if #available(iOS 10.0, *) {
             let rotationInDegrees = Measurement(value: 45, unit: UnitAngle.degrees)
             let rotationInRadians = CGFloat(rotationInDegrees.converted(to: .radians).value)
             let transform = CATransform3DMakeRotation(rotationInRadians, 0, 0.0, 1.0)
-            rightlight.layer.transform = transform
+            image.layer.transform = transform
             
             let animation = CABasicAnimation(keyPath: "transform")
-            animation.fromValue = NSValue(caTransform3D: CATransform3DMakeRotation(CGFloat(Measurement(value: 0, unit: UnitAngle.degrees).converted(to: .radians).value), 0, 0.0, 1.0))
-            animation.toValue = NSValue(caTransform3D: CATransform3DMakeRotation(CGFloat(Measurement(value: 20, unit: UnitAngle.degrees).converted(to: .radians).value), 0, 0.0, 1.0))
+            animation.fromValue = NSValue(caTransform3D: CATransform3DMakeRotation(CGFloat(Measurement(value: fromAngle, unit: UnitAngle.degrees).converted(to: .radians).value), 0, 0.0, 1.0))
+            animation.toValue = NSValue(caTransform3D: CATransform3DMakeRotation(CGFloat(Measurement(value: toAngle, unit: UnitAngle.degrees).converted(to: .radians).value), 0, 0.0, 1.0))
             animation.duration = 2.0
             animation.repeatCount = Float.infinity
             animation.autoreverses = true
-            rightlight.layer.add(animation, forKey: nil)
+            image.layer.add(animation, forKey: "rotateWithAnchor")
         } else {
             // Fallback on earlier versions
         }
-
+        
     }
     
     func setAnchorPoint(anchorPoint: CGPoint, view: UIView) {
@@ -123,7 +111,6 @@ class Band: UIView {
         
         position.x -= oldPoint.x
         position.x += newPoint.x;
-        
         position.y -= oldPoint.y;
         position.y += newPoint.y;
         
