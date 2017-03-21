@@ -21,6 +21,7 @@ class EditPannel: UIView {
     let slotSize = size.noteSize.rawValue
     let buttonSize = size.noteSize.rawValue
     let controlButtonSize = size.controlButtonSize.rawValue
+    let song = Songs()
     
     init(){
         super.init(frame: CGRect(x: 0.0 , y: 0.0, width: size.screenWidth.rawValue, height: size.screenHeight.rawValue))
@@ -113,6 +114,7 @@ class EditPannel: UIView {
             tapGestureRecignizer.delegate = newSlot
             tapGestureRecignizer.numberOfTapsRequired = 2
             newSlot.addGestureRecognizer(tapGestureRecignizer)
+            newSlot.image = UIImage(named: "t_" + song.odeToJoyTrombone()[i])
             self.addSubview(newSlot)
         }
     }
@@ -125,6 +127,7 @@ class EditPannel: UIView {
             tapGestureRecignizer.delegate = newSlot
             tapGestureRecignizer.numberOfTapsRequired = 2
             newSlot.addGestureRecognizer(tapGestureRecignizer)
+            newSlot.image = UIImage(named: "d_" + song.odeToJoyDrum()[i])
             self.addSubview(newSlot)
         }
     }
@@ -137,6 +140,7 @@ class EditPannel: UIView {
             tapGestureRecignizer.delegate = newSlot
             tapGestureRecignizer.numberOfTapsRequired = 2
             newSlot.addGestureRecognizer(tapGestureRecignizer)
+            newSlot.image = UIImage(named: "s_" + song.odeToJoySaxphone()[i])
             self.addSubview(newSlot)
         }
     }
@@ -149,7 +153,7 @@ class EditPannel: UIView {
 //            }
 //            composedNoteList.append(newComposedNote)
 //        }
-        composedNoteList = Songs().odeToJoy()
+        composedNoteList = song.odeToJoy()
     }
     
     func addTromboneButtons() {
