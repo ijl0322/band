@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E0B62F21E81B96600EE5B80 /* Songs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0B62F11E81B96600EE5B80 /* Songs.swift */; };
 		0E21507D1E7DB19F0011497F /* t_Do.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0E21507A1E7DB19F0011497F /* t_Do.wav */; };
 		0E21507E1E7DB19F0011497F /* t_Mi.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0E21507B1E7DB19F0011497F /* t_Mi.wav */; };
 		0E21507F1E7DB19F0011497F /* t_Re.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0E21507C1E7DB19F0011497F /* t_Re.wav */; };
@@ -69,6 +70,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E0B62F11E81B96600EE5B80 /* Songs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Songs.swift; sourceTree = "<group>"; };
 		0E21507A1E7DB19F0011497F /* t_Do.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = t_Do.wav; sourceTree = "<group>"; };
 		0E21507B1E7DB19F0011497F /* t_Mi.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = t_Mi.wav; sourceTree = "<group>"; };
 		0E21507C1E7DB19F0011497F /* t_Re.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = t_Re.wav; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				0E274B641E7F62960050E394 /* SaxphoneNotes.swift */,
 				0E3674031E7C8097004C4E9F /* Instruments.swift */,
 				0E274B8B1E807C970050E394 /* Size.swift */,
+				0E0B62F11E81B96600EE5B80 /* Songs.swift */,
 				0EEBC1381E7B4B8400E473D0 /* Assets.xcassets */,
 				0EEBC13A1E7B4B8400E473D0 /* LaunchScreen.storyboard */,
 				0E274B881E7F7C5C0050E394 /* SaxphoneSoundFiles */,
@@ -359,6 +362,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E0B62F21E81B96600EE5B80 /* Songs.swift in Sources */,
 				0EEBC1341E7B4B8400E473D0 /* ViewController.swift in Sources */,
 				0E3674021E7C7D90004C4E9F /* TromboneSlots.swift in Sources */,
 				0EEBC14C1E7B62D400E473D0 /* NoteButtons.swift in Sources */,

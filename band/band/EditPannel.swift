@@ -33,7 +33,7 @@ class EditPannel: UIView {
         addDrumButtons()
         addSaxphoneButtons()
         addComposedNotes()
-        addPlayAndClear()
+        addButtons()
         
     }
     
@@ -49,6 +49,7 @@ class EditPannel: UIView {
     func clearSongButton(_ button: UIButton!) {
         clearAll()
     }
+    
     
     func showMenuButton(_ button: UIButton!) {
         
@@ -74,7 +75,7 @@ class EditPannel: UIView {
         }
     }
     
-    func addPlayAndClear() {
+    func addButtons() {
         let playButton: UIButton = UIButton(frame: CGRect(x: 800.0 , y: 850.0, width: 120.0, height: 50.0))
         playButton.backgroundColor = UIColor.white
         playButton.addTarget(self, action: #selector(playButton(_:)), for: UIControlEvents.touchUpInside)
@@ -322,6 +323,9 @@ class EditPannel: UIView {
         
     }
     
+    func playSong() {
+        composedNoteList[0].playSong()
+    }
 
     func handleTap(_ recognizer: UITapGestureRecognizer){
         guard let view = recognizer.view else {
