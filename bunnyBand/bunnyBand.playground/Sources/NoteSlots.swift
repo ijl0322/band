@@ -10,7 +10,7 @@ import UIKit
 
 class NoteSlots: UIImageView, UIGestureRecognizerDelegate {
     
-    let noteSize = size.noteSize.rawValue
+    let size = 50.0
     var instrument: Instruments!
     
     required init?(coder aDecoder: NSCoder) {
@@ -18,8 +18,8 @@ class NoteSlots: UIImageView, UIGestureRecognizerDelegate {
     }
     
     init(x: Double, y: Double) {
-        super.init(frame: CGRect(x: x , y: y, width: noteSize, height: noteSize))
-        self.layer.borderWidth = 2
+        super.init(frame: CGRect(x: x , y: y, width: size, height: size))
+        self.layer.borderWidth = 3
         self.layer.borderColor = UIColor.darkGray.cgColor
         self.instrument = Instruments.None
         self.isUserInteractionEnabled = true

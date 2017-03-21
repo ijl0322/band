@@ -9,27 +9,22 @@
 import Foundation
 import UIKit
 
-class EditPannel: UIView {
+public class EditPannel: UIView {
     let allNotes = ["Do", "Re", "Mi", "Fa", "So", "La", "Ti", "Do_h", "Re_h", "Mi_h", "Fa_h", "So_h", "La_h", "Ti_h"]
     let allDrumNotes = ["single", "double", "triple"]
     let numSlots = 20
-    var isMenuHidden = false
     var composedNoteList: [ComposedNotes] = []
-    var tromboneButtons: [TromboneNoteButtons] = []
-    var drumButtons: [DrumNoteButtons] = []
-    var saxphoneButtons: [SaxphoneNoteButtons] = []
-    let slotSize = size.noteSize.rawValue
-    let buttonSize = size.noteSize.rawValue
-    let controlButtonSize = size.controlButtonSize.rawValue
+    let slotSize = 50.0
+    let buttonSize = 50.0
     
-    init(){
-        super.init(frame: CGRect(x: 0.0 , y: 0.0, width: size.screenWidth.rawValue, height: size.screenHeight.rawValue))
-        //self.backgroundColor = UIColor.black
+    public init(){
+        super.init(frame: CGRect(x: 0.0 , y: 0.0, width: 800.0, height: 600.0))
+        self.backgroundColor = UIColor.black
         
         addTromboneSlots()
         addSaxphoneSlots()
         addDrumSlots()
-        addTromboneButtons()
+        addButtons()
         addDrumButtons()
         addSaxphoneButtons()
         addComposedNotes()
@@ -37,7 +32,7 @@ class EditPannel: UIView {
         
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -50,58 +45,17 @@ class EditPannel: UIView {
         clearAll()
     }
     
-    func showMenuButton(_ button: UIButton!) {
-        
-        switch button.tag {
-        case 1:
-            showTromboneButtons()
-            hideDrumButtons()
-            hideSaxphoneButtons()
-            break
-        case 2:
-            hideTromboneButtons()
-            showDrumButtons()
-            hideSaxphoneButtons()
-            break
-        case 3:
-            hideDrumButtons()
-            hideTromboneButtons()
-            showSaxphoneButtons()
-            break
-        default:
-            break
-        
-        }
-    }
-    
     func addPlayAndClear() {
-        let playButton: UIButton = UIButton(frame: CGRect(x: 800.0 , y: 850.0, width: 120.0, height: 50.0))
-        playButton.backgroundColor = UIColor.white
-        playButton.addTarget(self, action: #selector(playButton(_:)), for: UIControlEvents.touchUpInside)
-        self.addSubview(playButton)
+        let button: UIButton = UIButton(frame: CGRect(x: 500.0 , y: 450.0, width: 120.0, height: 50.0))
+        button.backgroundColor = UIColor.white
+        button.addTarget(self, action: #selector(playButton(_:)), for: UIControlEvents.touchUpInside)
+        self.addSubview(button)
         
-        let clearButton: UIButton = UIButton(frame: CGRect(x: 900, y: 850.0, width: 120.0, height: 50.0))
-        clearButton.backgroundColor = UIColor.red
-        clearButton.addTarget(self, action: #selector(clearSongButton(_:)), for: UIControlEvents.touchUpInside)
-        self.addSubview(clearButton)
+        let button2: UIButton = UIButton(frame: CGRect(x: 500.0, y: 500.0, width: 120.0, height: 50.0))
+        button2.backgroundColor = UIColor.red
+        button2.addTarget(self, action: #selector(clearSongButton(_:)), for: UIControlEvents.touchUpInside)
+        self.addSubview(button2)
         
-        let menuTButton: UIButton = UIButton(frame: CGRect(x: 0, y: 850.0, width: 50.0, height: 50.0))
-        menuTButton.backgroundColor = UIColor.cyan
-        menuTButton.tag = 1
-        menuTButton.addTarget(self, action: #selector(showMenuButton(_:)), for: UIControlEvents.touchUpInside)
-        self.addSubview(menuTButton)
-        
-        let menuDButton: UIButton = UIButton(frame: CGRect(x: 50, y: 850.0, width: 50.0, height: 50.0))
-        menuDButton.backgroundColor = UIColor.purple
-        menuDButton.addTarget(self, action: #selector(showMenuButton(_:)), for: UIControlEvents.touchUpInside)
-        menuDButton.tag = 2
-        self.addSubview(menuDButton)
-        
-        let menuSButton: UIButton = UIButton(frame: CGRect(x: 0, y: 900.0, width: 50.0, height: 50.0))
-        menuSButton.backgroundColor = UIColor.green
-        menuSButton.tag = 3
-        menuSButton.addTarget(self, action: #selector(showMenuButton(_:)), for: UIControlEvents.touchUpInside)
-        self.addSubview(menuSButton)
     }
     
     func addTromboneSlots() {
@@ -150,91 +104,38 @@ class EditPannel: UIView {
         }
     }
     
-    func addTromboneButtons() {
+    func addButtons() {
         for i in 0...13 {
-            let newButton = TromboneNoteButtons(name: allNotes[i], x: Double(i)*buttonSize+controlButtonSize, y: 875.0)
+            let newButton = TromboneNoteButtons(name: allNotes[i], x: Double(i)*buttonSize, y: 400.0)
             let panGestureRecignizer = UIPanGestureRecognizer(target: self, action: #selector(self.handlePan(_:)))
             panGestureRecignizer.delegate = newButton
             newButton.addGestureRecognizer(panGestureRecignizer)
-            newButton.alpha = 1
-            tromboneButtons.append(newButton)
+            //newButton.tag = i+1
             self.addSubview(newButton)
         }
     }
     
     func addDrumButtons() {
         for i in 0...2 {
-            let newButton = DrumNoteButtons(name: allDrumNotes[i], x: Double(i)*buttonSize+controlButtonSize, y: 875.0)
+            let newButton = DrumNoteButtons(name: allDrumNotes[i], x: Double(i)*buttonSize, y: 460.0)
             let panGestureRecignizer = UIPanGestureRecognizer(target: self, action: #selector(self.handlePan(_:)))
             panGestureRecignizer.delegate = newButton
             newButton.addGestureRecognizer(panGestureRecignizer)
-            newButton.alpha = 0
-            drumButtons.append(newButton)
+            //newButton.tag = i+1
             self.addSubview(newButton)
         }
     }
     
     func addSaxphoneButtons() {
         for i in 0...13 {
-            let newButton = SaxphoneNoteButtons(name: allNotes[i], x: Double(i)*buttonSize+controlButtonSize, y: 875.0)
+            let newButton = SaxphoneNoteButtons(name: allNotes[i], x: Double(i)*buttonSize, y: 520.0)
             let panGestureRecignizer = UIPanGestureRecognizer(target: self, action: #selector(self.handlePan(_:)))
             panGestureRecignizer.delegate = newButton
             newButton.addGestureRecognizer(panGestureRecignizer)
-            newButton.alpha = 0
-            saxphoneButtons.append(newButton)
+            //newButton.tag = i+1
             self.addSubview(newButton)
         }
     }
-    
-    func hideTromboneButtons() {
-        for i in 1...tromboneButtons.count{
-            UIView.animate(withDuration: 0.1, delay: 0.05*Double(i), options: [], animations:{
-                self.tromboneButtons[self.tromboneButtons.count - i].alpha = 0
-            }, completion: nil)
-        }
-    }
-    
-    func hideDrumButtons() {
-        for i in 1...drumButtons.count{
-            UIView.animate(withDuration: 0.1, delay: 0.05*Double(i), options: [], animations:{
-                self.drumButtons[self.drumButtons.count - i].alpha = 0
-            }, completion: nil)
-        }
-    }
-    
-    func hideSaxphoneButtons() {
-        for i in 1...saxphoneButtons.count{
-            UIView.animate(withDuration: 0.1, delay: 0.05*Double(i), options: [], animations:{
-                self.saxphoneButtons[self.saxphoneButtons.count - i].alpha = 0
-            }, completion: nil)
-        }
-    }
-    
-    
-    func showTromboneButtons() {
-        for i in 0..<tromboneButtons.count{
-            UIView.animate(withDuration: 0.1, delay: 0.05*Double(i), options: [], animations:{
-                self.tromboneButtons[i].alpha = 1
-            }, completion: nil)
-        }
-    }
-    
-    func showDrumButtons() {
-        for i in 0..<drumButtons.count{
-            UIView.animate(withDuration: 0.1, delay: 0.05*Double(i), options: [], animations:{
-                self.drumButtons[i].alpha = 1
-            }, completion: nil)
-        }
-    }
-    
-    func showSaxphoneButtons() {
-        for i in 0..<saxphoneButtons.count{
-            UIView.animate(withDuration: 0.1, delay: 0.05*Double(i), options: [], animations:{
-                self.saxphoneButtons[i].alpha = 1
-            }, completion: nil)
-        }
-    }
-    
     
     func handlePan(_ recognizer: UIPanGestureRecognizer){
         

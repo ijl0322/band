@@ -12,10 +12,13 @@ import AVFoundation
 class ViewController: UIViewController {
 
     let editPannel = EditPannel()
+    let band = Band()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.addSubview(editPannel)
+        view.addSubview(band)
     }
         
 }
