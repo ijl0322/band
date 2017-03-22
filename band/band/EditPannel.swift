@@ -29,7 +29,7 @@ class EditPannel: UIView {
     init(){
         super.init(frame: CGRect(x: 0.0 , y: 0.0, width: size.screenWidth.rawValue, height: size.screenHeight.rawValue))
         
-        self.backgroundColor = UIColor.black
+        //self.backgroundColor = UIColor.black
         addTromboneSlots()
         addSaxphoneSlots()
         addDrumSlots()
@@ -162,8 +162,18 @@ class EditPannel: UIView {
     }
     
     func addTromboneButtons() {
-        for i in 0...13 {
+        for i in 0...6 {
             let newButton = TromboneNoteButtons(name: allNotes[i], x: Double(i)*buttonSize+bigControlButtonSize, y: 510.0)
+            let panGestureRecignizer = UIPanGestureRecognizer(target: self, action: #selector(self.handlePan(_:)))
+            panGestureRecignizer.delegate = newButton
+            newButton.addGestureRecognizer(panGestureRecignizer)
+            newButton.alpha = 1
+            tromboneButtons.append(newButton)
+            self.addSubview(newButton)
+        }
+        
+        for i in 7...13{
+            let newButton = TromboneNoteButtons(name: allNotes[i], x: Double(i-7)*buttonSize+bigControlButtonSize, y: 550.0)
             let panGestureRecignizer = UIPanGestureRecognizer(target: self, action: #selector(self.handlePan(_:)))
             panGestureRecignizer.delegate = newButton
             newButton.addGestureRecognizer(panGestureRecignizer)
@@ -175,7 +185,7 @@ class EditPannel: UIView {
     
     func addDrumButtons() {
         for i in 0...2 {
-            let newButton = DrumNoteButtons(name: allDrumNotes[i], x: Double(i)*buttonSize+bigControlButtonSize, y: 560.0)
+            let newButton = DrumNoteButtons(name: allDrumNotes[i], x: Double(i)*buttonSize+bigControlButtonSize, y: 510.0)
             let panGestureRecignizer = UIPanGestureRecognizer(target: self, action: #selector(self.handlePan(_:)))
             panGestureRecignizer.delegate = newButton
             newButton.addGestureRecognizer(panGestureRecignizer)
@@ -186,8 +196,18 @@ class EditPannel: UIView {
     }
     
     func addSaxphoneButtons() {
-        for i in 0...13 {
-            let newButton = SaxphoneNoteButtons(name: allNotes[i], x: Double(i)*buttonSize+bigControlButtonSize, y: 875.0)
+        for i in 0...6 {
+            let newButton = SaxphoneNoteButtons(name: allNotes[i], x: Double(i)*buttonSize+bigControlButtonSize, y: 510.0)
+            let panGestureRecignizer = UIPanGestureRecognizer(target: self, action: #selector(self.handlePan(_:)))
+            panGestureRecignizer.delegate = newButton
+            newButton.addGestureRecognizer(panGestureRecignizer)
+            newButton.alpha = 0
+            saxphoneButtons.append(newButton)
+            self.addSubview(newButton)
+        }
+        
+        for i in 7...13 {
+            let newButton = SaxphoneNoteButtons(name: allNotes[i], x: Double(i-7)*buttonSize+bigControlButtonSize, y: 550.0)
             let panGestureRecignizer = UIPanGestureRecognizer(target: self, action: #selector(self.handlePan(_:)))
             panGestureRecignizer.delegate = newButton
             newButton.addGestureRecognizer(panGestureRecignizer)

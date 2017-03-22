@@ -19,8 +19,9 @@ class Band: UIView {
     var rightLight: UIImageView!
     
     init(){
-        super.init(frame: CGRect(x: 150.0 , y: 200.0, width: 800.0, height: 600.0))
+        super.init(frame: CGRect(x: 0.0 , y: 160.0, width: 800.0, height: 440.0))
         //self.backgroundColor = UIColor.red
+        
         addBunnies()
         addSpotlight()
         
@@ -41,17 +42,17 @@ class Band: UIView {
     }
     
     func addBunnies() {
-        tromboneBunny = UIImageView(frame: CGRect(x: 0.0 , y: 180.0, width: 350.0, height: 400.0))
+        tromboneBunny = UIImageView(frame: CGRect(x: 0.0 , y: 20.0, width: 250.0, height: 400.0))
         tromboneBunny.image = UIImage(named: "t_bunny")
         tromboneBunny.contentMode = .scaleAspectFit
         self.addSubview(tromboneBunny)
         
-        drumBunny = UIImageView(frame: CGRect(x: 250.0 , y: 160.0, width: 350.0, height: 400.0))
+        drumBunny = UIImageView(frame: CGRect(x: 250.0 , y: 0.0, width: 250.0, height: 400.0))
         drumBunny.image = UIImage(named: "d_bunny")
         drumBunny.contentMode = .scaleAspectFit
         self.addSubview(drumBunny)
         
-        saxphoneBunny = UIImageView(frame: CGRect(x: 500.0 , y: 180.0, width: 350.0, height: 400.0))
+        saxphoneBunny = UIImageView(frame: CGRect(x: 500.0 , y: 20.0, width: 250.0, height: 400.0))
         saxphoneBunny.image = UIImage(named: "s_bunny")
         saxphoneBunny.contentMode = .scaleAspectFit
         self.addSubview(saxphoneBunny)
@@ -78,13 +79,13 @@ class Band: UIView {
     func addSpotlight() {
         
         // Add left spot light
-        leftLight = UIImageView(frame: CGRect(x: 0.0 , y: 0.0, width: 400.0, height: 600.0))
+        leftLight = UIImageView(frame: CGRect(x: 0.0 , y: 0.0, width: 250.0, height: 440.0))
         leftLight.image = UIImage(named: "light_l")
         leftLight.alpha = 0
         self.addSubview(leftLight)
         
         // Add right spotlight
-        rightLight = UIImageView(frame: CGRect(x: 400.0 , y: 0.0, width: 400.0, height: 600.0))
+        rightLight = UIImageView(frame: CGRect(x: 550.0 , y: 0.0, width: 250.0, height: 440.0))
         rightLight.image = UIImage(named: "light_r")
         rightLight.alpha = 0
         self.addSubview(rightLight)

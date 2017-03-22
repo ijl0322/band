@@ -13,25 +13,41 @@ class ViewController: UIViewController, MusicStatusDelegate {
 
     let editPannel = EditPannel()
     let band = Band()
-    let playButton = UIButton(frame: CGRect(x: 0.0 , y: 0.0, width: 120.0, height: 50.0))
+    let infoButton = UIButton(frame: CGRect(x: 620.0 , y: 540.0, width: 60.0, height: 60.0))
+    let playButton = UIButton(frame: CGRect(x: 680.0 , y: 540.0, width: 60.0, height: 60.0))
+    let clearButton = UIButton(frame: CGRect(x: 740.0 , y: 540.0, width: 60.0, height: 60.0))
     var notes: [ComposedNotes] = []
     let snowView = LightingView(frame: CGRect(x: 0, y: 0, width: 800, height: 600))
+    let stage = UIImageView(frame: CGRect(x: 0, y: 0, width: 800, height: 600))
 
     override func viewDidLoad() {
         super.viewDidLoad()
         editPannel.composedNoteList.last?.delegate = self
+        stage.image = UIImage(named: "stage")
+        view.addSubview(stage)
         view.addSubview(snowView)
         view.addSubview(band)
         view.addSubview(editPannel)
+
         addButtons()
     }
     
     func addButtons() {
-        playButton.backgroundColor = UIColor.cyan
-        playButton.setTitle("Play", for: UIControlState.normal)
+        playButton.setImage(UIImage(named: "playButton"), for: .normal)
         playButton.addTarget(self, action: #selector(playButton(_:)), for: UIControlEvents.touchUpInside)
         self.view.addSubview(playButton)
         
+        clearButton.setImage(UIImage(named: "clearAllButton"), for: .normal)
+        clearButton.addTarget(self, action: #selector(clearButton(_:)), for: UIControlEvents.touchUpInside)
+        self.view.addSubview(clearButton)
+        
+        infoButton.setImage(UIImage(named: "infoButton"), for: .normal)
+        infoButton.addTarget(self, action: #selector(infoButton(_:)), for: UIControlEvents.touchUpInside)
+        self.view.addSubview(infoButton)
+    }
+    
+    func infoButton(_ button: UIButton!) {
+        print("showing info")
     }
     
     func playButton(_ button: UIButton!) {
@@ -39,9 +55,13 @@ class ViewController: UIViewController, MusicStatusDelegate {
         playButton.isEnabled = false
         self.playButton.alpha = 0.5
         self.snowView.alpha = 1
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
             self.editPannel.playSong()
         }
+    }
+    
+    func clearButton(_ button: UIButton!) {
+        editPannel.clearAll()
     }
     
     func musicEnded() {
