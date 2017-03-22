@@ -8,8 +8,8 @@
 
 import Foundation
 enum size: Double {
-    case screenWidth = 1366.0
-    case screenHeight = 1024.0
-    case noteSize = 50.0
+    case screenWidth = 800.0
+    case screenHeight = 600.0
+    case noteSize = 40.0
     case controlButtonSize = 100.0
 }

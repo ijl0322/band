@@ -19,8 +19,8 @@ class NoteSlots: UIImageView, UIGestureRecognizerDelegate {
     
     init(x: Double, y: Double) {
         super.init(frame: CGRect(x: x , y: y, width: noteSize, height: noteSize))
-        self.layer.borderWidth = 2
-        self.layer.borderColor = UIColor.darkGray.cgColor
+        //self.layer.borderWidth = 2
+        //self.layer.borderColor = UIColor.darkGray.cgColor
         self.instrument = Instruments.None
         self.isUserInteractionEnabled = true
     }

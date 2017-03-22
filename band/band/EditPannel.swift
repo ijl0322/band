@@ -22,12 +22,14 @@ class EditPannel: UIView {
     var saxphoneButtons: [SaxphoneNoteButtons] = []
     let slotSize = size.noteSize.rawValue
     let buttonSize = size.noteSize.rawValue
-    let controlButtonSize = size.controlButtonSize.rawValue
+    let bigControlButtonSize = size.controlButtonSize.rawValue
+    let controlButtonSize = size.controlButtonSize.rawValue/2
     let song = Songs()
     
     init(){
         super.init(frame: CGRect(x: 0.0 , y: 0.0, width: size.screenWidth.rawValue, height: size.screenHeight.rawValue))
         
+        self.backgroundColor = UIColor.black
         addTromboneSlots()
         addSaxphoneSlots()
         addDrumSlots()
@@ -57,9 +59,9 @@ class EditPannel: UIView {
         
         switch button.tag {
         case 1:
-            showTromboneButtons()
             hideDrumButtons()
-            hideSaxphoneButtons()
+            hideTromboneButtons()
+            showSaxphoneButtons()
             break
         case 2:
             hideTromboneButtons()
@@ -67,9 +69,11 @@ class EditPannel: UIView {
             hideSaxphoneButtons()
             break
         case 3:
+            break
+        case 4:
+            showTromboneButtons()
             hideDrumButtons()
-            hideTromboneButtons()
-            showSaxphoneButtons()
+            hideSaxphoneButtons()
             break
         default:
             break
@@ -88,23 +92,30 @@ class EditPannel: UIView {
         clearButton.addTarget(self, action: #selector(clearSongButton(_:)), for: UIControlEvents.touchUpInside)
         self.addSubview(clearButton)
         
-        let menuTButton: UIButton = UIButton(frame: CGRect(x: 0, y: 850.0, width: 50.0, height: 50.0))
-        menuTButton.backgroundColor = UIColor.cyan
-        menuTButton.tag = 1
-        menuTButton.addTarget(self, action: #selector(showMenuButton(_:)), for: UIControlEvents.touchUpInside)
-        self.addSubview(menuTButton)
-        
-        let menuDButton: UIButton = UIButton(frame: CGRect(x: 50, y: 850.0, width: 50.0, height: 50.0))
-        menuDButton.backgroundColor = UIColor.purple
-        menuDButton.addTarget(self, action: #selector(showMenuButton(_:)), for: UIControlEvents.touchUpInside)
-        menuDButton.tag = 2
-        self.addSubview(menuDButton)
-        
-        let menuSButton: UIButton = UIButton(frame: CGRect(x: 0, y: 900.0, width: 50.0, height: 50.0))
-        menuSButton.backgroundColor = UIColor.green
-        menuSButton.tag = 3
+        let menuSButton: UIButton = UIButton(frame: CGRect(x: 0, y: 500.0, width: controlButtonSize, height: controlButtonSize))
+        menuSButton.tag = 1
+        menuSButton.setImage(UIImage(named: "s_Button"), for: .normal)
         menuSButton.addTarget(self, action: #selector(showMenuButton(_:)), for: UIControlEvents.touchUpInside)
         self.addSubview(menuSButton)
+        
+        let menuDButton: UIButton = UIButton(frame: CGRect(x: controlButtonSize, y: 500.0, width: controlButtonSize, height: controlButtonSize))
+        menuDButton.addTarget(self, action: #selector(showMenuButton(_:)), for: UIControlEvents.touchUpInside)
+        menuDButton.tag = 2
+        menuDButton.setImage(UIImage(named: "d_Button"), for: .normal)
+        self.addSubview(menuDButton)
+        
+        
+        let menuVButton: UIButton = UIButton(frame: CGRect(x: 0, y: 500.0 + controlButtonSize, width: controlButtonSize, height: controlButtonSize))
+        menuVButton.tag = 3
+        menuVButton.setImage(UIImage(named: "v_Button"), for: .normal)
+        menuVButton.addTarget(self, action: #selector(showMenuButton(_:)), for: UIControlEvents.touchUpInside)
+        self.addSubview(menuVButton)
+        
+        let menuTButton: UIButton = UIButton(frame: CGRect(x: controlButtonSize, y: 500.0 + controlButtonSize, width: controlButtonSize, height: controlButtonSize))
+        menuTButton.tag = 4
+        menuTButton.setImage(UIImage(named: "t_Button"), for: .normal)
+        menuTButton.addTarget(self, action: #selector(showMenuButton(_:)), for: UIControlEvents.touchUpInside)
+        self.addSubview(menuTButton)
     }
     
     func addTromboneSlots() {
@@ -122,7 +133,7 @@ class EditPannel: UIView {
     
     func addDrumSlots() {
         for i in 0...numSlots {
-            let newSlot = DrumSlots(x: Double(i)*slotSize, y: 60.0)
+            let newSlot = DrumSlots(x: Double(i)*slotSize, y: slotSize*1)
             newSlot.tag = i + 200
             let tapGestureRecignizer = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
             tapGestureRecignizer.delegate = newSlot
@@ -135,7 +146,7 @@ class EditPannel: UIView {
     
     func addSaxphoneSlots() {
         for i in 0...numSlots {
-            let newSlot = SaxphoneSlots(x: Double(i)*slotSize, y: 120.0)
+            let newSlot = SaxphoneSlots(x: Double(i)*slotSize, y: slotSize*2)
             newSlot.tag = i + 300
             let tapGestureRecignizer = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
             tapGestureRecignizer.delegate = newSlot
@@ -152,7 +163,7 @@ class EditPannel: UIView {
     
     func addTromboneButtons() {
         for i in 0...13 {
-            let newButton = TromboneNoteButtons(name: allNotes[i], x: Double(i)*buttonSize+controlButtonSize, y: 875.0)
+            let newButton = TromboneNoteButtons(name: allNotes[i], x: Double(i)*buttonSize+bigControlButtonSize, y: 510.0)
             let panGestureRecignizer = UIPanGestureRecognizer(target: self, action: #selector(self.handlePan(_:)))
             panGestureRecignizer.delegate = newButton
             newButton.addGestureRecognizer(panGestureRecignizer)
@@ -164,7 +175,7 @@ class EditPannel: UIView {
     
     func addDrumButtons() {
         for i in 0...2 {
-            let newButton = DrumNoteButtons(name: allDrumNotes[i], x: Double(i)*buttonSize+controlButtonSize, y: 875.0)
+            let newButton = DrumNoteButtons(name: allDrumNotes[i], x: Double(i)*buttonSize+bigControlButtonSize, y: 560.0)
             let panGestureRecignizer = UIPanGestureRecognizer(target: self, action: #selector(self.handlePan(_:)))
             panGestureRecignizer.delegate = newButton
             newButton.addGestureRecognizer(panGestureRecignizer)
@@ -176,7 +187,7 @@ class EditPannel: UIView {
     
     func addSaxphoneButtons() {
         for i in 0...13 {
-            let newButton = SaxphoneNoteButtons(name: allNotes[i], x: Double(i)*buttonSize+controlButtonSize, y: 875.0)
+            let newButton = SaxphoneNoteButtons(name: allNotes[i], x: Double(i)*buttonSize+bigControlButtonSize, y: 875.0)
             let panGestureRecignizer = UIPanGestureRecognizer(target: self, action: #selector(self.handlePan(_:)))
             panGestureRecignizer.delegate = newButton
             newButton.addGestureRecognizer(panGestureRecignizer)
@@ -309,13 +320,13 @@ class EditPannel: UIView {
     func clearAll() {
         for i in 0...numSlots {
             if let slot = self.viewWithTag(i + 100) as? NoteSlots{
-                slot.image = nil
+                slot.image = UIImage(named: "t_None")
             }
             if let slot = self.viewWithTag(i + 200) as? NoteSlots{
-                slot.image = nil
+                slot.image = UIImage(named: "d_None")
             }
             if let slot = self.viewWithTag(i + 300) as? NoteSlots{
-                slot.image = nil
+                slot.image = UIImage(named: "s_None")
             }
             composedNoteList[i].clearNote()
         }
@@ -338,15 +349,15 @@ class EditPannel: UIView {
         switch noteSlot.instrument! {
         case .Trombone:
             composedNoteList[index].tNote = composedNoteList[index].tNone
-            noteSlot.image = nil
+            noteSlot.image = UIImage(named: "t_None")
             break
         case .Saxphone:
             composedNoteList[index].sNote = composedNoteList[index].sNone
-            noteSlot.image = nil
+            noteSlot.image = UIImage(named: "s_None")
             break
         case .Drum:
             composedNoteList[index].dNote = composedNoteList[index].dNone
-            noteSlot.image = nil
+            noteSlot.image = UIImage(named: "d_None")
             break
         default:
             break

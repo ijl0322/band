@@ -15,15 +15,14 @@ class ViewController: UIViewController, MusicStatusDelegate {
     let band = Band()
     let playButton = UIButton(frame: CGRect(x: 0.0 , y: 0.0, width: 120.0, height: 50.0))
     var notes: [ComposedNotes] = []
-    let snowView = LightingView(frame: CGRect(x: 0, y: 0, width: 1336, height: 1024))
+    let snowView = LightingView(frame: CGRect(x: 0, y: 0, width: 800, height: 600))
 
     override func viewDidLoad() {
         super.viewDidLoad()
         editPannel.composedNoteList.last?.delegate = self
-        view.addSubview(editPannel)
-
         view.addSubview(snowView)
         view.addSubview(band)
+        view.addSubview(editPannel)
         addButtons()
     }
     
