@@ -17,15 +17,18 @@ class ComposedNotes {
     var tNote: Notes
     var sNote: Notes
     var dNote: Notes
+    var vNote: Notes
     var tNone = TromboneNotes(name: "None")
     var sNone = SaxphoneNotes(name: "None")
     var dNone = DrumNotes(name: "None")
+    var vNone = ViolinNotes(name: "None")
     var next: ComposedNotes?
     
-    init(tNoteName: String = "None", sNoteName: String = "None", dNoteName: String = "None") {
+    init(tNoteName: String = "None", sNoteName: String = "None", dNoteName: String = "None", vNoteName: String = "None") {
         tNote = TromboneNotes(name: tNoteName)
         sNote = SaxphoneNotes(name: sNoteName)
         dNote = DrumNotes(name: dNoteName)
+        vNote = ViolinNotes(name: vNoteName)
     }
     
     func addTNote(note: String) {
@@ -40,10 +43,15 @@ class ComposedNotes {
         dNote = DrumNotes(name: note)
     }
     
+    func addVNote(note: String) {
+        vNote = ViolinNotes(name: note)
+    }
+    
     func playSong() {
         tNote.playNote()
         sNote.playNote()
         dNote.playNote()
+        vNote.playNote()
         if let nextNote = self.next {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.15){
                 print("playing next")
@@ -59,5 +67,6 @@ class ComposedNotes {
         tNote = tNone
         dNote = dNone
         sNote = sNone
+        vNote = vNone
     }
 }

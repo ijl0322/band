@@ -10,10 +10,8 @@ import UIKit
 
 class TromboneSlots: NoteSlots {
     
-    let babyBlue = UIColor(red: 201/255, green: 245/255, blue: 252/255, alpha: 1)
     override required init(x: Double, y: Double) {
         super.init(x: x, y: y)
-        //self.backgroundColor = babyBlue
         self.instrument = Instruments.Trombone
         self.image = UIImage(named: "t_None")
     }

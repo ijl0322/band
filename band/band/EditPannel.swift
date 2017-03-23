@@ -20,6 +20,7 @@ class EditPannel: UIView {
     var tromboneButtons: [TromboneNoteButtons] = []
     var drumButtons: [DrumNoteButtons] = []
     var saxphoneButtons: [SaxphoneNoteButtons] = []
+    var violinButtons: [ViolinNoteButtons] = []
     let slotSize = size.noteSize.rawValue
     let buttonSize = size.noteSize.rawValue
     let bigControlButtonSize = size.controlButtonSize.rawValue
@@ -29,13 +30,14 @@ class EditPannel: UIView {
     init(){
         super.init(frame: CGRect(x: 0.0 , y: 0.0, width: size.screenWidth.rawValue, height: size.screenHeight.rawValue))
         
-        //self.backgroundColor = UIColor.black
         addTromboneSlots()
         addSaxphoneSlots()
         addDrumSlots()
-        addTromboneButtons()
+        addViolinSlots()
         addDrumButtons()
+        addTromboneButtons()
         addSaxphoneButtons()
+        addViolinButtons()
         addComposedNotes()
         addButtons()
         
@@ -61,19 +63,26 @@ class EditPannel: UIView {
         case 1:
             hideDrumButtons()
             hideTromboneButtons()
+            hideViolinButtons()
             showSaxphoneButtons()
             break
         case 2:
             hideTromboneButtons()
             showDrumButtons()
             hideSaxphoneButtons()
+            hideViolinButtons()
             break
         case 3:
+            hideTromboneButtons()
+            hideDrumButtons()
+            hideSaxphoneButtons()
+            showViolinButtons()
             break
         case 4:
             showTromboneButtons()
             hideDrumButtons()
             hideSaxphoneButtons()
+            hideViolinButtons()
             break
         default:
             break
@@ -157,6 +166,19 @@ class EditPannel: UIView {
         }
     }
     
+    func addViolinSlots() {
+        for i in 0...numSlots {
+            let newSlot = ViolinSlots(x: Double(i)*slotSize, y: slotSize*3)
+            newSlot.tag = i + 400
+            let tapGestureRecignizer = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+            tapGestureRecignizer.delegate = newSlot
+            tapGestureRecignizer.numberOfTapsRequired = 2
+            newSlot.addGestureRecognizer(tapGestureRecignizer)
+            newSlot.image = UIImage(named: "v_None")
+            self.addSubview(newSlot)
+        }
+    }
+    
     func addComposedNotes() {
         composedNoteList = song.odeToJoy()
     }
@@ -217,6 +239,29 @@ class EditPannel: UIView {
         }
     }
     
+    func addViolinButtons() {
+        for i in 0...6 {
+            let newButton = ViolinNoteButtons(name: allNotes[i], x: Double(i)*buttonSize+bigControlButtonSize, y: 510.0)
+            let panGestureRecignizer = UIPanGestureRecognizer(target: self, action: #selector(self.handlePan(_:)))
+            panGestureRecignizer.delegate = newButton
+            newButton.addGestureRecognizer(panGestureRecignizer)
+            newButton.alpha = 0
+            violinButtons.append(newButton)
+            self.addSubview(newButton)
+        }
+        
+        for i in 7...13 {
+            let newButton = ViolinNoteButtons(name: allNotes[i], x: Double(i-7)*buttonSize+bigControlButtonSize, y: 550.0)
+            let panGestureRecignizer = UIPanGestureRecognizer(target: self, action: #selector(self.handlePan(_:)))
+            panGestureRecignizer.delegate = newButton
+            newButton.addGestureRecognizer(panGestureRecignizer)
+            newButton.alpha = 0
+            violinButtons.append(newButton)
+            self.addSubview(newButton)
+        }
+    }
+    
+    
     func hideTromboneButtons() {
         for i in 1...tromboneButtons.count{
             UIView.animate(withDuration: 0.1, delay: 0.05*Double(i), options: [], animations:{
@@ -237,6 +282,14 @@ class EditPannel: UIView {
         for i in 1...saxphoneButtons.count{
             UIView.animate(withDuration: 0.1, delay: 0.05*Double(i), options: [], animations:{
                 self.saxphoneButtons[self.saxphoneButtons.count - i].alpha = 0
+            }, completion: nil)
+        }
+    }
+    
+    func hideViolinButtons() {
+        for i in 1...violinButtons.count{
+            UIView.animate(withDuration: 0.1, delay: 0.05*Double(i), options: [], animations:{
+                self.violinButtons[self.violinButtons.count - i].alpha = 0
             }, completion: nil)
         }
     }
@@ -266,6 +319,14 @@ class EditPannel: UIView {
         }
     }
     
+    func showViolinButtons() {
+        for i in 0..<violinButtons.count{
+            UIView.animate(withDuration: 0.1, delay: 0.05*Double(i), options: [], animations:{
+                self.violinButtons[i].alpha = 1
+            }, completion: nil)
+        }
+    }
+    
     
     func handlePan(_ recognizer: UIPanGestureRecognizer){
         
@@ -290,6 +351,9 @@ class EditPannel: UIView {
             break
         case .Drum:
             typeTag = 200
+            break
+        case .Violin:
+            typeTag = 400
             break
         default:
             break
@@ -330,6 +394,8 @@ class EditPannel: UIView {
             case .Drum:
                 composedNoteList[imgTag%100].addDNote(note: NoteButton.name)
                 break
+            case .Violin:
+                composedNoteList[imgTag%100].addVNote(note: NoteButton.name)
             default:
                 break
             }
@@ -347,6 +413,9 @@ class EditPannel: UIView {
             }
             if let slot = self.viewWithTag(i + 300) as? NoteSlots{
                 slot.image = UIImage(named: "s_None")
+            }
+            if let slot = self.viewWithTag(i + 400) as? NoteSlots{
+                slot.image = UIImage(named: "v_None")
             }
             composedNoteList[i].clearNote()
         }
@@ -378,6 +447,10 @@ class EditPannel: UIView {
         case .Drum:
             composedNoteList[index].dNote = composedNoteList[index].dNone
             noteSlot.image = UIImage(named: "d_None")
+            break
+        case .Violin:
+            composedNoteList[index].vNote = composedNoteList[index].vNone
+            noteSlot.image = UIImage(named: "v_None")
             break
         default:
             break

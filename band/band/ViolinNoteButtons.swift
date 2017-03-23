@@ -1,21 +1,20 @@
 //
-//  TromboneNoteButtons.swift
+//  ViolinNoteButtons.swift
 //  band
 //
-//  Created by Isabel  Lee on 17/03/2017.
+//  Created by Isabel  Lee on 23/03/2017.
 //  Copyright © 2017 Isabel  Lee. All rights reserved.
 //
 
-
 import UIKit
 
-class TromboneNoteButtons: NoteButtons {
-
+class ViolinNoteButtons: NoteButtons {
+    
     required override init(name: String, x: Double, y: Double) {
         super.init(name: name, x: x, y: y)
-        self.fullName = "t_" + name
+        self.fullName = "v_" + name
         self.image = UIImage(named: self.fullName)
-        self.instrument = Instruments.Trombone
+        self.instrument = Instruments.Violin
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -76,6 +76,9 @@
 		0EE4813D1E8456E200DF746A /* v_Ti_h.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0EE4812F1E8456E200DF746A /* v_Ti_h.wav */; };
 		0EE4813E1E8456E200DF746A /* v_Ti.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0EE481301E8456E200DF746A /* v_Ti.wav */; };
 		0EE481401E84570A00DF746A /* v_None.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0EE4813F1E84570A00DF746A /* v_None.wav */; };
+		0EE481421E8457B500DF746A /* ViolinNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE481411E8457B500DF746A /* ViolinNotes.swift */; };
+		0EE481441E84584100DF746A /* ViolinNoteButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE481431E84584100DF746A /* ViolinNoteButtons.swift */; };
+		0EE481461E8458CE00DF746A /* ViolinSlots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE481451E8458CE00DF746A /* ViolinSlots.swift */; };
 		0EEBC1321E7B4B8400E473D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBC1311E7B4B8400E473D0 /* AppDelegate.swift */; };
 		0EEBC1341E7B4B8400E473D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBC1331E7B4B8400E473D0 /* ViewController.swift */; };
 		0EEBC1371E7B4B8400E473D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EEBC1351E7B4B8400E473D0 /* Main.storyboard */; };
@@ -158,6 +161,9 @@
 		0EE4812F1E8456E200DF746A /* v_Ti_h.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = v_Ti_h.wav; sourceTree = "<group>"; };
 		0EE481301E8456E200DF746A /* v_Ti.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = v_Ti.wav; sourceTree = "<group>"; };
 		0EE4813F1E84570A00DF746A /* v_None.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = v_None.wav; sourceTree = "<group>"; };
+		0EE481411E8457B500DF746A /* ViolinNotes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViolinNotes.swift; sourceTree = "<group>"; };
+		0EE481431E84584100DF746A /* ViolinNoteButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViolinNoteButtons.swift; sourceTree = "<group>"; };
+		0EE481451E8458CE00DF746A /* ViolinSlots.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViolinSlots.swift; sourceTree = "<group>"; };
 		0EEBC12E1E7B4B8400E473D0 /* band.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = band.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EEBC1311E7B4B8400E473D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0EEBC1331E7B4B8400E473D0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -294,12 +300,15 @@
 				0E3674011E7C7D90004C4E9F /* TromboneSlots.swift */,
 				0E691DCC1E7F4A9C000B761A /* DrumSlots.swift */,
 				0E274B681E7F63300050E394 /* SaxphoneSlots.swift */,
+				0EE481451E8458CE00DF746A /* ViolinSlots.swift */,
 				0E3673FD1E7C7838004C4E9F /* TromboneNoteButtons.swift */,
 				0E691DCA1E7F4A62000B761A /* DrumNoteButtons.swift */,
 				0E274B661E7F62DE0050E394 /* SaxphoneNoteButtons.swift */,
+				0EE481431E84584100DF746A /* ViolinNoteButtons.swift */,
 				0E3673FB1E7C74D7004C4E9F /* TromboneNotes.swift */,
 				0E691DC11E7F49B3000B761A /* DrumNotes.swift */,
 				0E274B641E7F62960050E394 /* SaxphoneNotes.swift */,
+				0EE481411E8457B500DF746A /* ViolinNotes.swift */,
 				0E3674031E7C8097004C4E9F /* Instruments.swift */,
 				0E274B8B1E807C970050E394 /* Size.swift */,
 				0E0B62F11E81B96600EE5B80 /* Songs.swift */,
@@ -457,10 +466,13 @@
 				0E691DCD1E7F4A9C000B761A /* DrumSlots.swift in Sources */,
 				0E691DC01E7F14E7000B761A /* EditPannel.swift in Sources */,
 				0E274B8C1E807C970050E394 /* Size.swift in Sources */,
+				0EE481421E8457B500DF746A /* ViolinNotes.swift in Sources */,
 				0E3674001E7C7B57004C4E9F /* NoteSlots.swift in Sources */,
 				0E3673FC1E7C74D7004C4E9F /* TromboneNotes.swift in Sources */,
 				0EEBC1441E7B4CE500E473D0 /* Notes.swift in Sources */,
+				0EE481441E84584100DF746A /* ViolinNoteButtons.swift in Sources */,
 				0E5F0F5D1E83424E00C32CA8 /* SplashScreen.swift in Sources */,
+				0EE481461E8458CE00DF746A /* ViolinSlots.swift in Sources */,
 				0E3674041E7C8097004C4E9F /* Instruments.swift in Sources */,
 				0E3673FE1E7C7838004C4E9F /* TromboneNoteButtons.swift in Sources */,
 				0E691DC21E7F49B3000B761A /* DrumNotes.swift in Sources */,
