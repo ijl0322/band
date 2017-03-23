@@ -11,7 +11,8 @@ import AVFoundation
 
 class ViewController: UIViewController, MusicStatusDelegate {
 
-    let editPannel = EditPannel()
+    var editPannel: EditPannel?
+    var tempEditPannel: EditPannel?
     let band = Band()
     let infoButton = UIButton(frame: CGRect(x: 620.0 , y: 540.0, width: 60.0, height: 60.0))
     let playButton = UIButton(frame: CGRect(x: 680.0 , y: 540.0, width: 60.0, height: 60.0))
@@ -19,16 +20,45 @@ class ViewController: UIViewController, MusicStatusDelegate {
     var notes: [ComposedNotes] = []
     let snowView = LightingView(frame: CGRect(x: 0, y: 0, width: 800, height: 600))
     let stage = UIImageView(frame: CGRect(x: 0, y: 0, width: 800, height: 600))
+    let splashScreen = SplashScreen()
+    let splashScreenImage = UIImageView(frame: CGRect(x: 0, y: 0, width: 800, height: 600))
+    let startButton = UIButton(frame: CGRect(x: 620.0 , y: 500.0, width: 100.0, height: 100.0))
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        editPannel.composedNoteList.last?.delegate = self
+        startButton.setImage(UIImage(named: "startButton"), for: .normal)
+        startButton.addTarget(self, action: #selector(start(_:)), for: UIControlEvents.touchUpInside)
+        
+        DispatchQueue.global(qos: .background).async {
+            self.tempEditPannel = EditPannel()
+            DispatchQueue.main.async {
+                self.editPannel = self.tempEditPannel
+                self.editPannel!.composedNoteList.last?.delegate = self
+                self.view.addSubview(self.startButton)
+                self.addBlinkingAnimation(view: self.startButton.imageView!)
+            }
+        }
+    
+        view.addSubview(splashScreen)
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        view.addSubview(splashScreen)
+        splashScreen.animateLogo()
+        
+    }
+    
+    func start(_ button: UIButton) {
+        splashScreen.removeFromSuperview()
+        //button.removeFromSuperview()
         stage.image = UIImage(named: "stage")
+        snowView.alpha = 0
         view.addSubview(stage)
         view.addSubview(snowView)
         view.addSubview(band)
-        view.addSubview(editPannel)
-
+        view.addSubview(editPannel!)
         addButtons()
     }
     
@@ -56,12 +86,12 @@ class ViewController: UIViewController, MusicStatusDelegate {
         self.playButton.alpha = 0.5
         self.snowView.alpha = 1
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-            self.editPannel.playSong()
+            self.editPannel!.playSong()
         }
     }
     
     func clearButton(_ button: UIButton!) {
-        editPannel.clearAll()
+        editPannel!.clearAll()
     }
     
     func musicEnded() {
@@ -74,6 +104,18 @@ class ViewController: UIViewController, MusicStatusDelegate {
             self.playButton.isEnabled = true
             self.playButton.alpha = 1
         }
+    }
+    
+    func addBlinkingAnimation(view: UIView) {
+        let key = "opacity"
+        let animation = CABasicAnimation(keyPath: key)
+        animation.fromValue = 1.0
+        animation.toValue = 0.0
+        animation.duration = 0.5
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        animation.autoreverses = true
+        animation.repeatCount = FLT_MAX
+        view.layer.add(animation, forKey: key)
     }
 }
 
