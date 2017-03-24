@@ -23,6 +23,7 @@ class ViewController: UIViewController, MusicStatusDelegate {
     let splashScreen = SplashScreen()
     let splashScreenImage = UIImageView(frame: CGRect(x: 0, y: 0, width: 800, height: 600))
     let startButton = UIButton(frame: CGRect(x: 620.0 , y: 500.0, width: 100.0, height: 100.0))
+    let infoPage = InfoView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,15 +52,17 @@ class ViewController: UIViewController, MusicStatusDelegate {
     }
     
     func start(_ button: UIButton) {
-        splashScreen.removeFromSuperview()
-        //button.removeFromSuperview()
-        stage.image = UIImage(named: "stage")
-        snowView.alpha = 0
-        view.addSubview(stage)
-        view.addSubview(snowView)
-        view.addSubview(band)
-        view.addSubview(editPannel!)
-        addButtons()
+        splashScreen.removeSplashScreen()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+            self.splashScreen.removeFromSuperview()
+            self.stage.image = UIImage(named: "stage")
+            self.snowView.alpha = 0
+            self.view.addSubview(self.stage)
+            self.view.addSubview(self.snowView)
+            self.view.addSubview(self.band)
+            self.view.addSubview(self.editPannel!)
+            self.addButtons()
+        }
     }
     
     func addButtons() {
@@ -78,6 +81,8 @@ class ViewController: UIViewController, MusicStatusDelegate {
     
     func infoButton(_ button: UIButton!) {
         print("showing info")
+        self.view.addSubview(infoPage)
+        infoPage.showInfo()
     }
     
     func playButton(_ button: UIButton!) {

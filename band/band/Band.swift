@@ -15,13 +15,12 @@ class Band: UIView {
     var tromboneBunny: UIImageView!
     var drumBunny: UIImageView!
     var saxphoneBunny: UIImageView!
+    var violinBunny: UIImageView!
     var leftLight: UIImageView!
     var rightLight: UIImageView!
     
     init(){
         super.init(frame: CGRect(x: 0.0 , y: 160.0, width: 800.0, height: 440.0))
-        //self.backgroundColor = UIColor.red
-        
         addBunnies()
         addSpotlight()
         
@@ -42,17 +41,23 @@ class Band: UIView {
     }
     
     func addBunnies() {
-        tromboneBunny = UIImageView(frame: CGRect(x: 0.0 , y: 20.0, width: 250.0, height: 400.0))
+        tromboneBunny = UIImageView(frame: CGRect(x: 0.0 , y: 15.0, width: 250.0, height: 400.0))
         tromboneBunny.image = UIImage(named: "t_bunny")
         tromboneBunny.contentMode = .scaleAspectFit
         self.addSubview(tromboneBunny)
         
-        drumBunny = UIImageView(frame: CGRect(x: 250.0 , y: 0.0, width: 250.0, height: 400.0))
+        violinBunny = UIImageView(frame: CGRect(x: 180.0 , y: 0.0, width: 275.0, height: 400.0))
+        violinBunny.image = UIImage(named: "v_bunny")
+        violinBunny.contentMode = .scaleAspectFit
+        self.addSubview(violinBunny)
+        
+        
+        drumBunny = UIImageView(frame: CGRect(x: 400.0 , y: 0.0, width: 250.0, height: 400.0))
         drumBunny.image = UIImage(named: "d_bunny")
         drumBunny.contentMode = .scaleAspectFit
         self.addSubview(drumBunny)
         
-        saxphoneBunny = UIImageView(frame: CGRect(x: 500.0 , y: 20.0, width: 250.0, height: 400.0))
+        saxphoneBunny = UIImageView(frame: CGRect(x: 550.0 , y: 15.0, width: 250.0, height: 400.0))
         saxphoneBunny.image = UIImage(named: "s_bunny")
         saxphoneBunny.contentMode = .scaleAspectFit
         self.addSubview(saxphoneBunny)
@@ -62,6 +67,7 @@ class Band: UIView {
         wiggleAnimation(image: tromboneBunny)
         wiggleAnimation(image: drumBunny)
         wiggleAnimation(image: saxphoneBunny)
+        wiggleAnimation(image: violinBunny)
     }
     
     func wiggleAnimation(image: UIImageView) {
@@ -70,7 +76,7 @@ class Band: UIView {
         wiggle.values = [-angle, angle]
         
         wiggle.autoreverses = true
-        wiggle.duration = self.randomInterval(0.5, variance: 0.025)
+        wiggle.duration = self.randomInterval(0.5, variance: 0.05)
         wiggle.repeatCount = Float.infinity
         wiggle.isAdditive = true
         image.layer.add(wiggle, forKey: "wiggle")
@@ -113,6 +119,7 @@ class Band: UIView {
         drumBunny.layer.removeAllAnimations()
         saxphoneBunny.layer.removeAllAnimations()
         tromboneBunny.layer.removeAllAnimations()
+        violinBunny.layer.removeAllAnimations()
     }
     
     func rotateWithAnchor(image: UIView, anchorX: Double, anchorY: Double, fromAngle: Double, toAngle: Double){

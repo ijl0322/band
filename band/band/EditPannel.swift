@@ -29,7 +29,7 @@ class EditPannel: UIView {
     
     init(){
         super.init(frame: CGRect(x: 0.0 , y: 0.0, width: size.screenWidth.rawValue, height: size.screenHeight.rawValue))
-        
+        //self.backgroundColor = UIColor.black
         addTromboneSlots()
         addSaxphoneSlots()
         addDrumSlots()
@@ -129,7 +129,7 @@ class EditPannel: UIView {
     
     func addTromboneSlots() {
         for i in 0...numSlots {
-            let newSlot = TromboneSlots(x: Double(i)*slotSize, y: 0.0)
+            let newSlot = TromboneSlots(x: Double(i)*slotSize, y: slotSize*3)
             newSlot.tag = i + 100
             let tapGestureRecignizer = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
             tapGestureRecignizer.delegate = newSlot
@@ -168,13 +168,13 @@ class EditPannel: UIView {
     
     func addViolinSlots() {
         for i in 0...numSlots {
-            let newSlot = ViolinSlots(x: Double(i)*slotSize, y: slotSize*3)
+            let newSlot = ViolinSlots(x: Double(i)*slotSize, y: 0.0)
             newSlot.tag = i + 400
             let tapGestureRecignizer = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
             tapGestureRecignizer.delegate = newSlot
             tapGestureRecignizer.numberOfTapsRequired = 2
             newSlot.addGestureRecognizer(tapGestureRecignizer)
-            newSlot.image = UIImage(named: "v_None")
+            newSlot.image = UIImage(named: "v_" + song.odeToJoyViolin()[i])
             self.addSubview(newSlot)
         }
     }
@@ -189,7 +189,7 @@ class EditPannel: UIView {
             let panGestureRecignizer = UIPanGestureRecognizer(target: self, action: #selector(self.handlePan(_:)))
             panGestureRecignizer.delegate = newButton
             newButton.addGestureRecognizer(panGestureRecignizer)
-            newButton.alpha = 1
+            newButton.alpha = 0
             tromboneButtons.append(newButton)
             self.addSubview(newButton)
         }
@@ -199,7 +199,7 @@ class EditPannel: UIView {
             let panGestureRecignizer = UIPanGestureRecognizer(target: self, action: #selector(self.handlePan(_:)))
             panGestureRecignizer.delegate = newButton
             newButton.addGestureRecognizer(panGestureRecignizer)
-            newButton.alpha = 1
+            newButton.alpha = 0
             tromboneButtons.append(newButton)
             self.addSubview(newButton)
         }

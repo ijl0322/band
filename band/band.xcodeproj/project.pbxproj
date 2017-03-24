@@ -52,6 +52,8 @@
 		0E3674001E7C7B57004C4E9F /* NoteSlots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3673FF1E7C7B57004C4E9F /* NoteSlots.swift */; };
 		0E3674021E7C7D90004C4E9F /* TromboneSlots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3674011E7C7D90004C4E9F /* TromboneSlots.swift */; };
 		0E3674041E7C8097004C4E9F /* Instruments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3674031E7C8097004C4E9F /* Instruments.swift */; };
+		0E50D9DD1E8465EF009C8E3C /* SharedNoneNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50D9DC1E8465EF009C8E3C /* SharedNoneNotes.swift */; };
+		0E50D9DF1E84B2B9009C8E3C /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50D9DE1E84B2B9009C8E3C /* InfoView.swift */; };
 		0E5F0F5D1E83424E00C32CA8 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5F0F5C1E83424E00C32CA8 /* SplashScreen.swift */; };
 		0E691DC01E7F14E7000B761A /* EditPannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E691DBF1E7F14E7000B761A /* EditPannel.swift */; };
 		0E691DC21E7F49B3000B761A /* DrumNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E691DC11E7F49B3000B761A /* DrumNotes.swift */; };
@@ -137,6 +139,8 @@
 		0E3673FF1E7C7B57004C4E9F /* NoteSlots.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteSlots.swift; sourceTree = "<group>"; };
 		0E3674011E7C7D90004C4E9F /* TromboneSlots.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TromboneSlots.swift; sourceTree = "<group>"; };
 		0E3674031E7C8097004C4E9F /* Instruments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Instruments.swift; sourceTree = "<group>"; };
+		0E50D9DC1E8465EF009C8E3C /* SharedNoneNotes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedNoneNotes.swift; sourceTree = "<group>"; };
+		0E50D9DE1E84B2B9009C8E3C /* InfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		0E5F0F5C1E83424E00C32CA8 /* SplashScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		0E691DBF1E7F14E7000B761A /* EditPannel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPannel.swift; sourceTree = "<group>"; };
 		0E691DC11E7F49B3000B761A /* DrumNotes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrumNotes.swift; sourceTree = "<group>"; };
@@ -313,7 +317,9 @@
 				0E274B8B1E807C970050E394 /* Size.swift */,
 				0E0B62F11E81B96600EE5B80 /* Songs.swift */,
 				0E9D96E01E81CD1200EAC043 /* SharedAudioPlayer.swift */,
+				0E50D9DC1E8465EF009C8E3C /* SharedNoneNotes.swift */,
 				0E5F0F5C1E83424E00C32CA8 /* SplashScreen.swift */,
+				0E50D9DE1E84B2B9009C8E3C /* InfoView.swift */,
 				0E9D96E41E81DC4D00EAC043 /* LightingView.swift */,
 				0EEBC1381E7B4B8400E473D0 /* Assets.xcassets */,
 				0EEBC13A1E7B4B8400E473D0 /* LaunchScreen.storyboard */,
@@ -472,6 +478,8 @@
 				0EEBC1441E7B4CE500E473D0 /* Notes.swift in Sources */,
 				0EE481441E84584100DF746A /* ViolinNoteButtons.swift in Sources */,
 				0E5F0F5D1E83424E00C32CA8 /* SplashScreen.swift in Sources */,
+				0E50D9DF1E84B2B9009C8E3C /* InfoView.swift in Sources */,
+				0E50D9DD1E8465EF009C8E3C /* SharedNoneNotes.swift in Sources */,
 				0EE481461E8458CE00DF746A /* ViolinSlots.swift in Sources */,
 				0E3674041E7C8097004C4E9F /* Instruments.swift in Sources */,
 				0E3673FE1E7C7838004C4E9F /* TromboneNoteButtons.swift in Sources */,

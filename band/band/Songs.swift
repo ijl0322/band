@@ -22,6 +22,11 @@ class Songs {
                   "Mi_h", "Re_h", "Do_h", "Ti", "None",
                   "Do", "Do", "Ti", "Do_h", "None",
                   "Mi_h", "None", "Ti", "Ti", "None"]
+    let vNotes = ["Mi_h", "Mi_h", "Fa_h", "So_h", "None",
+                  "So_h", "Fa_h", "Mi_h", "Re_h", "None",
+                  "Do_h", "Do_h", "Re_h", "Mi_h", "None",
+                  "Mi_h", "None", "Re_h", "Re_h", "None"]
+
     init(){
 
     }
@@ -30,7 +35,7 @@ class Songs {
         var notes: [ComposedNotes] = []
     
         for i in 0..<tNotes.count{
-            let newComposedNote = ComposedNotes(tNoteName: tNotes[i], sNoteName: sNotes[i], dNoteName: dNotes[i])
+            let newComposedNote = ComposedNotes(tNoteName: tNotes[i], sNoteName: sNotes[i], dNoteName: dNotes[i], vNoteName: vNotes[i])
             if let lastElement = notes.last {
                 lastElement.next = newComposedNote
             }
@@ -49,5 +54,9 @@ class Songs {
     
     func odeToJoySaxphone() -> [String] {
         return self.sNotes
+    }
+    
+    func odeToJoyViolin() -> [String] {
+        return self.vNotes
     }
 }

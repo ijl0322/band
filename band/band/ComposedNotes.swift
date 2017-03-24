@@ -18,10 +18,10 @@ class ComposedNotes {
     var sNote: Notes
     var dNote: Notes
     var vNote: Notes
-    var tNone = TromboneNotes(name: "None")
-    var sNone = SaxphoneNotes(name: "None")
-    var dNone = DrumNotes(name: "None")
-    var vNone = ViolinNotes(name: "None")
+    var tNone = SharedNoneNote.trombone
+    var sNone = SharedNoneNote.saxphone
+    var dNone = SharedNoneNote.drum
+    var vNone = SharedNoneNote.violin
     var next: ComposedNotes?
     
     init(tNoteName: String = "None", sNoteName: String = "None", dNoteName: String = "None", vNoteName: String = "None") {
