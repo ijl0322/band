@@ -6,12 +6,14 @@
 //  Copyright © 2017 Isabel  Lee. All rights reserved.
 //
 
-// http://stackoverflow.com/questions/26815263/setting-a-rotation-point-for-cgaffinetransformmakerotation-swift
+
 
 import UIKit
 
+//Define a subclass of UIView, which represents four bunny musicians and two spotlights.
 class Band: UIView {
     
+    //MARK: Variables
     var tromboneBunny: UIImageView!
     var drumBunny: UIImageView!
     var saxphoneBunny: UIImageView!
@@ -19,38 +21,29 @@ class Band: UIView {
     var leftLight: UIImageView!
     var rightLight: UIImageView!
     
+    //MARK: Initializer
     init(){
         super.init(frame: CGRect(x: 0.0 , y: 160.0, width: 800.0, height: 440.0))
         addBunnies()
         addSpotlight()
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func startBand() {
-        leftLight.alpha = 0.7
-        rightLight.alpha = 0.7
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6){
-            self.animateBunnies()
-            self.animateSpotlight()
-        }
-    }
-    
+    //Adds all bunnies to the view
     func addBunnies() {
-        tromboneBunny = UIImageView(frame: CGRect(x: 0.0 , y: 55.0, width: 250.0, height: 250.0))
-        tromboneBunny.image = UIImage(named: "t_bunny")
-        tromboneBunny.contentMode = .scaleAspectFit
-        self.addSubview(tromboneBunny)
         
         violinBunny = UIImageView(frame: CGRect(x: 180.0 , y: 30.0, width: 275.0, height: 275.0))
         violinBunny.image = UIImage(named: "v_bunny")
         violinBunny.contentMode = .scaleAspectFit
         self.addSubview(violinBunny)
         
+        tromboneBunny = UIImageView(frame: CGRect(x: 0.0 , y: 55.0, width: 250.0, height: 250.0))
+        tromboneBunny.image = UIImage(named: "t_bunny")
+        tromboneBunny.contentMode = .scaleAspectFit
+        self.addSubview(tromboneBunny)
         
         drumBunny = UIImageView(frame: CGRect(x: 400.0 , y: 40.0, width: 250.0, height: 250.0))
         drumBunny.image = UIImage(named: "d_bunny")
@@ -63,25 +56,7 @@ class Band: UIView {
         self.addSubview(saxphoneBunny)
     }
     
-    func animateBunnies() {
-        wiggleAnimation(image: tromboneBunny)
-        wiggleAnimation(image: drumBunny)
-        wiggleAnimation(image: saxphoneBunny)
-        wiggleAnimation(image: violinBunny)
-    }
-    
-    func wiggleAnimation(image: UIImageView) {
-        let angle = 0.1
-        let wiggle = CAKeyframeAnimation(keyPath: "transform.rotation.z")
-        wiggle.values = [-angle, angle]
-        
-        wiggle.autoreverses = true
-        wiggle.duration = self.randomInterval(0.5, variance: 0.05)
-        wiggle.repeatCount = Float.infinity
-        wiggle.isAdditive = true
-        image.layer.add(wiggle, forKey: "wiggle")
-    }
-    
+    //Adds the spot lights to the view
     func addSpotlight() {
         
         // Add left spot light
@@ -97,6 +72,28 @@ class Band: UIView {
         self.addSubview(rightLight)
     }
     
+    //Turn on spotlight, then start the band's animation
+    func startBand() {
+        leftLight.alpha = 0.7
+        rightLight.alpha = 0.7
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6){
+            self.animateBunnies()
+            self.animateSpotlight()
+        }
+    }
+    
+    //MARK: Animations
+    
+    //Adds the wiggle animations to the bunnies
+    func animateBunnies() {
+        wiggleAnimation(image: tromboneBunny)
+        wiggleAnimation(image: drumBunny)
+        wiggleAnimation(image: saxphoneBunny)
+        wiggleAnimation(image: violinBunny)
+    }
+    
+    //Animate the spotlight so that it rotates during the performance
     func animateSpotlight() {
         leftLight.alpha = 0.7
         rightLight.alpha = 0.7
@@ -104,10 +101,14 @@ class Band: UIView {
         rotateWithAnchor(image: rightLight, anchorX: 1.0, anchorY: 0.0, fromAngle: 0.0, toAngle: 20.0)
     }
     
+    //Slowly dim the spotlights and stop all animations
     func stopAllAnimation(){
         
+        //Move spotlights to it's original position
         leftLight.transform = CGAffineTransform(rotationAngle: (0.0 * CGFloat(M_PI)) / 180.0)
         rightLight.transform = CGAffineTransform(rotationAngle: (0.0 * CGFloat(M_PI)) / 180.0)
+        
+        //Slowly dim the spotlights
         UIView.animate(withDuration: 6, animations: {
             self.leftLight.alpha = 0
             self.rightLight.alpha = 0
@@ -122,6 +123,7 @@ class Band: UIView {
         violinBunny.layer.removeAllAnimations()
     }
     
+    //This function takes an image, and rotate it around the point (anchorX and anchorY), to and from the fromAngle and toAngle.
     func rotateWithAnchor(image: UIView, anchorX: Double, anchorY: Double, fromAngle: Double, toAngle: Double){
         setAnchorPoint(anchorPoint: CGPoint(x: anchorX, y: anchorY), view: image)
         if #available(iOS 10.0, *) {
@@ -142,6 +144,10 @@ class Band: UIView {
         }
     }
     
+    //MARK: Supporting functions
+    
+    //This function sets the anchorPoint of an UIView from the center to the anchor point specified 
+    //in the parameters
     func setAnchorPoint(anchorPoint: CGPoint, view: UIView) {
         var newPoint = CGPoint(x: view.bounds.size.width * anchorPoint.x, y: view.bounds.size.height * anchorPoint.y)
         var oldPoint = CGPoint(x: view.bounds.size.width * view.layer.anchorPoint.x, y: view.bounds.size.height * view.layer.anchorPoint.y)
@@ -160,7 +166,21 @@ class Band: UIView {
         view.layer.anchorPoint = anchorPoint;
     }
     
+    //Returns a random interval from the interval provided. (with variance)
     func randomInterval(_ interval: TimeInterval, variance: Double) -> TimeInterval {
         return interval + variance * Double((Double(arc4random_uniform(1000)) - 500.0) / 500.0)
+    }
+    
+    //Adds a wiggling animation to a UIImageView.
+    func wiggleAnimation(image: UIImageView) {
+        let angle = 0.1
+        let wiggle = CAKeyframeAnimation(keyPath: "transform.rotation.z")
+        wiggle.values = [-angle, angle]
+        
+        wiggle.autoreverses = true
+        wiggle.duration = self.randomInterval(0.5, variance: 0.05)
+        wiggle.repeatCount = Float.infinity
+        wiggle.isAdditive = true
+        image.layer.add(wiggle, forKey: "wiggle")
     }
 }

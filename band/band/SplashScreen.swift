@@ -15,6 +15,8 @@ class SplashScreen: UIView {
     var saxphoneBunny: UIImageView!
     var tromboneBunny: UIImageView!
     var drumBunny: UIImageView!
+    var loadingLabel: UILabel!
+    var loadingEnded = false
 
     init() {
         super.init(frame: CGRect(x: 0.0 , y: 0.0, width: size.screenWidth.rawValue, height: size.screenHeight.rawValue))
@@ -30,6 +32,13 @@ class SplashScreen: UIView {
         self.addSubview(bandLogo)
         self.addSubview(signature)
         
+        loadingLabel = UILabel(frame: CGRect(x: 620, y: 500, width: 100, height: 100))
+        loadingLabel.textAlignment = .center
+        loadingLabel.text = "Loading..."
+        loadingLabel.textColor = UIColor.white
+        loadingLabel.alpha = 0
+        self.addSubview(loadingLabel)
+        
         tromboneBunny = UIImageView(frame: CGRect(x: -250.0 , y: 215.0, width: 250.0, height: 400.0))
         tromboneBunny.image = UIImage(named: "t_bunny")
         tromboneBunny.contentMode = .scaleAspectFit
@@ -40,7 +49,6 @@ class SplashScreen: UIView {
         violinBunny.contentMode = .scaleAspectFit
         self.addSubview(violinBunny)
         
-        
         drumBunny = UIImageView(frame: CGRect(x: 1050.0 , y: 200.0, width: 250.0, height: 400.0))
         drumBunny.image = UIImage(named: "d_bunny")
         drumBunny.contentMode = .scaleAspectFit
@@ -50,6 +58,7 @@ class SplashScreen: UIView {
         saxphoneBunny.image = UIImage(named: "s_bunny")
         saxphoneBunny.contentMode = .scaleAspectFit
         self.addSubview(saxphoneBunny)
+        
     }
     
     func animateLogo() {
@@ -75,8 +84,20 @@ class SplashScreen: UIView {
                 self.tromboneBunny.center.x = 125.0
             }, completion: {(finish: Bool) in UIView.animate(withDuration: 1, animations: {
                 self.saxphoneBunny.center.x = 675.0
-            }, completion: nil)})})})})})})})})
+            }, completion:{(finish: Bool) in
+                self.showLoadingLabel()})})})})})})})})})
         })
+    }
+    
+    func endLoading(){
+        loadingEnded = true
+        loadingLabel.alpha = 0
+    }
+    
+    func showLoadingLabel() {
+        if !loadingEnded {
+            loadingLabel.alpha = 1
+        }
     }
     
     func removeSplashScreen() {

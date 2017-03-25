@@ -11,8 +11,8 @@ import UIKit
 
 class LightingView: UIView {
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init() {
+        super.init(frame: CGRect(x: 0, y: 0, width: 800, height: 600))
         
         let emitter = layer as! CAEmitterLayer
         emitter.emitterPosition = CGPoint(x: bounds.size.width / 2, y: 0)

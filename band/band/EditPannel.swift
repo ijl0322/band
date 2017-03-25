@@ -30,7 +30,6 @@ class EditPannel: UIView {
     
     init(){
         super.init(frame: CGRect(x: 0.0 , y: 0.0, width: size.screenWidth.rawValue, height: size.screenHeight.rawValue))
-        //self.backgroundColor = UIColor.black
         self.addSubview(sheetMusicPage)
         sheetMusicPage.alpha = 0
         addTromboneSlots()
@@ -466,6 +465,7 @@ class EditPannel: UIView {
     }
 
     func hideSheetMusicPage() {
+        sheetMusicPage.alpha = 0
         self.backgroundColor = UIColor.clear
     }
 }

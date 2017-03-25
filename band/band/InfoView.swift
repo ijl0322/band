@@ -6,15 +6,23 @@
 //  Copyright © 2017 Isabel  Lee. All rights reserved.
 //
 
+protocol InfoViewStatus: class {
+    func startPerformance() -> Void
+}
+
 import UIKit
 class InfoView: UIView {
     
+    weak var delegate: InfoViewStatus?
     var info1: UIImageView!
     var info2: UIImageView!
     var info3: UIImageView!
+    var info4: UIImageView!
     var nextButton1: UIButton!
     var nextButton2: UIButton!
     var okButton: UIButton!
+    var okButton2: UIButton!
+    var isFirstLauch = true
     init() {
         super.init(frame: CGRect(x: 0.0 , y: 0.0, width: size.screenWidth.rawValue, height: size.screenHeight.rawValue))
         setUp()
@@ -33,6 +41,11 @@ class InfoView: UIView {
         self.info3.image = UIImage(named: "info3")
         self.info3.isUserInteractionEnabled = true
         
+        self.info4 = UIImageView(frame: CGRect(x: 0.0 , y: 0.0, width: size.screenWidth.rawValue, height: size.screenHeight.rawValue))
+        self.info4.image = UIImage(named: "info4")
+        self.info4.isUserInteractionEnabled = true
+        
+        
         self.nextButton1 = UIButton(frame: CGRect(x: 690.0 , y: 525.0, width: 77, height: 44))
         self.nextButton1.addTarget(self, action: #selector(buttonTapped), for: UIControlEvents.touchUpInside)
         self.nextButton1.tag = 1
@@ -48,9 +61,17 @@ class InfoView: UIView {
         self.okButton.tag = 3
         self.okButton.setImage(UIImage(named: "okButton"), for: .normal)
         
+        self.okButton2 = UIButton(frame: CGRect(x: 690.0 , y: 525.0, width: 77, height: 44))
+        self.okButton2.addTarget(self, action: #selector(buttonTapped), for: UIControlEvents.touchUpInside)
+        self.okButton2.tag = 4
+        self.okButton2.setImage(UIImage(named: "okButton"), for: .normal)
+        
         self.info1.addSubview(nextButton1)
         self.info2.addSubview(nextButton2)
         self.info3.addSubview(okButton)
+        self.info4.addSubview(okButton2)
+        
+        self.addSubview(info4)
     }
 
     func buttonTapped(_ button: UIButton!) {
@@ -63,8 +84,16 @@ class InfoView: UIView {
             break
         case 3:
             info3.removeFromSuperview()
-            self.removeFromSuperview()
+            if !isFirstLauch{
+                self.removeFromSuperview()
+            }
             break
+        case 4:
+            info4.removeFromSuperview()
+            self.removeFromSuperview()
+            isFirstLauch = false
+            delegate?.startPerformance()
+            
         default:
             break
         }
