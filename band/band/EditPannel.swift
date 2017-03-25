@@ -9,77 +9,127 @@
 import Foundation
 import UIKit
 
+//Defines a subclass of UIView, representing the edit pannel for users to edit the song played by the 
+//bunny band. 
 
 class EditPannel: UIView {
     
+    //MARK: Variables
     let allNotes = ["Do", "Re", "Mi", "Fa", "So", "La", "Ti", "Do_h", "Re_h", "Mi_h", "Fa_h", "So_h", "La_h", "Ti_h"]
     let allDrumNotes = ["single", "double", "triple"]
     let numSlots = 19
-    var isMenuHidden = false
-    var composedNoteList: [ComposedNotes] = []
-    var tromboneButtons: [TromboneNoteButtons] = []
-    var drumButtons: [DrumNoteButtons] = []
-    var saxphoneButtons: [SaxphoneNoteButtons] = []
-    var violinButtons: [ViolinNoteButtons] = []
     let slotSize = size.noteSize.rawValue
     let buttonSize = size.noteSize.rawValue
     let bigControlButtonSize = size.controlButtonSize.rawValue
     let controlButtonSize = size.controlButtonSize.rawValue/2
     let song = Songs()
     let sheetMusicPage = SheetMusicView()
+    var composedNoteList: [ComposedNotes] = []
+    var tromboneButtons: [TromboneNoteButtons] = []
+    var drumButtons: [DrumNoteButtons] = []
+    var saxphoneButtons: [SaxphoneNoteButtons] = []
+    var violinButtons: [ViolinNoteButtons] = []
     
+    //MARK: Initializer
     init(){
         super.init(frame: CGRect(x: 0.0 , y: 0.0, width: size.screenWidth.rawValue, height: size.screenHeight.rawValue))
         self.addSubview(sheetMusicPage)
         sheetMusicPage.alpha = 0
+        
         addTromboneSlots()
         addSaxphoneSlots()
         addDrumSlots()
         addViolinSlots()
+        
         addDrumButtons()
         addTromboneButtons()
         addSaxphoneButtons()
         addViolinButtons()
+        
         addComposedNotes()
         addButtons()
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: Control Function
     
+    //Plays the song composed by the user
+    func playSong() {
+        composedNoteList[0].playSong()
+    }
+    
+    //Show the sheet music page
+    func showSheetMusicPage() {
+        self.backgroundColor = UIColor.black
+        sheetMusicPage.alpha = 1
+    }
+    
+    //Hide the sheet music page
+    func hideSheetMusicPage() {
+        sheetMusicPage.alpha = 0
+        self.backgroundColor = UIColor.clear
+    }
+    
+    //Clear all notes in the slots, allowing the user to start a new song
+    func clearAll() {
+        for i in 0...numSlots {
+            if let slot = self.viewWithTag(i + 100) as? NoteSlots{
+                slot.image = UIImage(named: "t_None")
+            }
+            if let slot = self.viewWithTag(i + 200) as? NoteSlots{
+                slot.image = UIImage(named: "d_None")
+            }
+            if let slot = self.viewWithTag(i + 300) as? NoteSlots{
+                slot.image = UIImage(named: "s_None")
+            }
+            if let slot = self.viewWithTag(i + 400) as? NoteSlots{
+                slot.image = UIImage(named: "v_None")
+            }
+            composedNoteList[i].clearNote()
+        }
+    }
+    
+    //MARK: UIButton actions
+    
+    //Play the song composed by the user
     func playButton(_ button: UIButton!) {
         composedNoteList[0].playSong()
     }
     
+    //Clear all notes added by the user so the user can start a new song.
     func clearSongButton(_ button: UIButton!) {
         clearAll()
     }
     
-    
+    //Hide and show note buttons of different instruments depending on which instrument button is tapped.
     func showMenuButton(_ button: UIButton!) {
         
         switch button.tag {
+        //Saxphone
         case 1:
             hideDrumButtons()
             hideTromboneButtons()
             hideViolinButtons()
             showSaxphoneButtons()
             break
+        //Drum
         case 2:
             hideTromboneButtons()
             showDrumButtons()
             hideSaxphoneButtons()
             hideViolinButtons()
             break
+        //Violin
         case 3:
             hideTromboneButtons()
             hideDrumButtons()
             hideSaxphoneButtons()
             showViolinButtons()
             break
+        //Trombone
         case 4:
             showTromboneButtons()
             hideDrumButtons()
@@ -88,10 +138,120 @@ class EditPannel: UIView {
             break
         default:
             break
-        
         }
     }
     
+    //MARK: Gesture recognizer function
+    func handleTap(_ recognizer: UITapGestureRecognizer){
+        guard let view = recognizer.view else {
+            print("cannot unwrap in function handleTap")
+            return
+        }
+        
+        let noteSlot = view as! NoteSlots
+        let index = noteSlot.tag % 100
+        switch noteSlot.instrument! {
+        case .Trombone:
+            composedNoteList[index].tNote = composedNoteList[index].tNone
+            noteSlot.image = UIImage(named: "t_None")
+            break
+        case .Saxphone:
+            composedNoteList[index].sNote = composedNoteList[index].sNone
+            noteSlot.image = UIImage(named: "s_None")
+            break
+        case .Drum:
+            composedNoteList[index].dNote = composedNoteList[index].dNone
+            noteSlot.image = UIImage(named: "d_None")
+            break
+        case .Violin:
+            composedNoteList[index].vNote = composedNoteList[index].vNone
+            noteSlot.image = UIImage(named: "v_None")
+            break
+        default:
+            break
+        }
+    }
+    
+    
+    func handlePan(_ recognizer: UIPanGestureRecognizer){
+        
+        let translation = recognizer.translation(in: recognizer.view)
+        if let view = recognizer.view {
+            view.center = CGPoint(x: view.center.x + translation.x, y: view.center.y + translation.y)
+        }
+        recognizer.setTranslation(CGPoint.zero, in: recognizer.view)
+        
+        guard let NoteButton = recognizer.view as? NoteButtons else {
+            print("cannot unwrap button")
+            return
+        }
+        
+        var typeTag = 0
+        switch NoteButton.instrument! {
+        case .Trombone:
+            typeTag = 100
+            break
+        case .Saxphone:
+            typeTag = 300
+            break
+        case .Drum:
+            typeTag = 200
+            break
+        case .Violin:
+            typeTag = 400
+            break
+        default:
+            break
+        }
+        
+        
+        if recognizer.state == UIGestureRecognizerState.ended {
+            
+            for i in 0...numSlots{
+                handleMove(imgTag: typeTag + i, recognizer: recognizer)
+            }
+            NoteButton.center = CGPoint(x: NoteButton.originalX, y: NoteButton.originalY)
+        }
+    }
+    
+    func handleMove(imgTag: Int, recognizer: UIPanGestureRecognizer) {
+        guard let tempImgView = self.viewWithTag(imgTag) as? NoteSlots else {
+            print("unsucessful unwrap")
+            return
+        }
+        
+        guard let NoteButton = recognizer.view as? NoteButtons else {
+            print("cannot unwrap button")
+            return
+        }
+
+        let smallerFrame = tempImgView.frame.insetBy(dx: 20.0, dy: 20.0)
+        
+        if (recognizer.view?.frame)!.intersects(smallerFrame) {
+            tempImgView.image = UIImage(named: NoteButton.fullName)
+            switch tempImgView.instrument! {
+            case .Trombone:
+                composedNoteList[imgTag%100].addTNote(note: NoteButton.name)
+                break
+            case .Saxphone:
+                composedNoteList[imgTag%100].addSNote(note: NoteButton.name)
+                break
+            case .Drum:
+                composedNoteList[imgTag%100].addDNote(note: NoteButton.name)
+                break
+            case .Violin:
+                composedNoteList[imgTag%100].addVNote(note: NoteButton.name)
+            default:
+                break
+            }
+        }
+            
+    }
+    
+
+    
+    
+    //MARK: Set up functions
     func addButtons() {
         let playButton: UIButton = UIButton(frame: CGRect(x: 800.0 , y: 850.0, width: 120.0, height: 50.0))
         playButton.backgroundColor = UIColor.white
@@ -115,7 +275,6 @@ class EditPannel: UIView {
         menuDButton.setImage(UIImage(named: "d_Button"), for: .normal)
         self.addSubview(menuDButton)
         
-        
         let menuVButton: UIButton = UIButton(frame: CGRect(x: 0, y: 500.0 + controlButtonSize, width: controlButtonSize, height: controlButtonSize))
         menuVButton.tag = 3
         menuVButton.setImage(UIImage(named: "v_Button"), for: .normal)
@@ -128,6 +287,7 @@ class EditPannel: UIView {
         menuTButton.addTarget(self, action: #selector(showMenuButton(_:)), for: UIControlEvents.touchUpInside)
         self.addSubview(menuTButton)
     }
+    
     
     func addTromboneSlots() {
         for i in 0...numSlots {
@@ -263,7 +423,9 @@ class EditPannel: UIView {
         }
     }
     
+    //MARK: Animations
     
+    //Hide all trombone buttons one by one
     func hideTromboneButtons() {
         for i in 1...tromboneButtons.count{
             UIView.animate(withDuration: 0.1, delay: 0.05*Double(i), options: [], animations:{
@@ -272,6 +434,7 @@ class EditPannel: UIView {
         }
     }
     
+    //Hide all drum buttons one by one
     func hideDrumButtons() {
         for i in 1...drumButtons.count{
             UIView.animate(withDuration: 0.1, delay: 0.05*Double(i), options: [], animations:{
@@ -280,6 +443,7 @@ class EditPannel: UIView {
         }
     }
     
+    //Hide all saxphone buttons one by one
     func hideSaxphoneButtons() {
         for i in 1...saxphoneButtons.count{
             UIView.animate(withDuration: 0.1, delay: 0.05*Double(i), options: [], animations:{
@@ -288,6 +452,7 @@ class EditPannel: UIView {
         }
     }
     
+    //Hide all violin buttons one by one
     func hideViolinButtons() {
         for i in 1...violinButtons.count{
             UIView.animate(withDuration: 0.1, delay: 0.05*Double(i), options: [], animations:{
@@ -296,7 +461,7 @@ class EditPannel: UIView {
         }
     }
     
-    
+    //Show all trombone buttons one by one
     func showTromboneButtons() {
         for i in 0..<tromboneButtons.count{
             UIView.animate(withDuration: 0.1, delay: 0.05*Double(i), options: [], animations:{
@@ -305,6 +470,7 @@ class EditPannel: UIView {
         }
     }
     
+    //Show all trombone buttons one by one
     func showDrumButtons() {
         for i in 0..<drumButtons.count{
             UIView.animate(withDuration: 0.1, delay: 0.05*Double(i), options: [], animations:{
@@ -313,6 +479,7 @@ class EditPannel: UIView {
         }
     }
     
+    //Show all saxphone buttons one by one
     func showSaxphoneButtons() {
         for i in 0..<saxphoneButtons.count{
             UIView.animate(withDuration: 0.1, delay: 0.05*Double(i), options: [], animations:{
@@ -321,152 +488,13 @@ class EditPannel: UIView {
         }
     }
     
+    //Show all violin buttons one by one
     func showViolinButtons() {
         for i in 0..<violinButtons.count{
             UIView.animate(withDuration: 0.1, delay: 0.05*Double(i), options: [], animations:{
                 self.violinButtons[i].alpha = 1
             }, completion: nil)
         }
-    }
-    
-    
-    func handlePan(_ recognizer: UIPanGestureRecognizer){
-        
-        let translation = recognizer.translation(in: recognizer.view)
-        if let view = recognizer.view {
-            view.center = CGPoint(x: view.center.x + translation.x, y: view.center.y + translation.y)
-        }
-        recognizer.setTranslation(CGPoint.zero, in: recognizer.view)
-        
-        guard let NoteButton = recognizer.view as? NoteButtons else {
-            print("cannot unwrap button")
-            return
-        }
-        
-        var typeTag = 0
-        switch NoteButton.instrument! {
-        case .Trombone:
-            typeTag = 100
-            break
-        case .Saxphone:
-            typeTag = 300
-            break
-        case .Drum:
-            typeTag = 200
-            break
-        case .Violin:
-            typeTag = 400
-            break
-        default:
-            break
-        }
-        
-        
-        if recognizer.state == UIGestureRecognizerState.ended {
-            
-            for i in 0...numSlots{
-                handleMove(imgTag: typeTag + i, recognizer: recognizer)
-            }
-            NoteButton.center = CGPoint(x: NoteButton.originalX, y: NoteButton.originalY)
-        }
-    }
-    
-    func handleMove(imgTag: Int, recognizer: UIPanGestureRecognizer) {
-        guard let tempImgView = self.viewWithTag(imgTag) as? NoteSlots else {
-            print("unsucessful unwrap")
-            return
-        }
-        
-        guard let NoteButton = recognizer.view as? NoteButtons else {
-            print("cannot unwrap button")
-            return
-        }
-
-        let smallerFrame = tempImgView.frame.insetBy(dx: 20.0, dy: 20.0)
-        
-        if (recognizer.view?.frame)!.intersects(smallerFrame) {
-            tempImgView.image = UIImage(named: NoteButton.fullName)
-            switch tempImgView.instrument! {
-            case .Trombone:
-                composedNoteList[imgTag%100].addTNote(note: NoteButton.name)
-                break
-            case .Saxphone:
-                composedNoteList[imgTag%100].addSNote(note: NoteButton.name)
-                break
-            case .Drum:
-                composedNoteList[imgTag%100].addDNote(note: NoteButton.name)
-                break
-            case .Violin:
-                composedNoteList[imgTag%100].addVNote(note: NoteButton.name)
-            default:
-                break
-            }
-        }
-            
-    }
-    
-    func clearAll() {
-        for i in 0...numSlots {
-            if let slot = self.viewWithTag(i + 100) as? NoteSlots{
-                slot.image = UIImage(named: "t_None")
-            }
-            if let slot = self.viewWithTag(i + 200) as? NoteSlots{
-                slot.image = UIImage(named: "d_None")
-            }
-            if let slot = self.viewWithTag(i + 300) as? NoteSlots{
-                slot.image = UIImage(named: "s_None")
-            }
-            if let slot = self.viewWithTag(i + 400) as? NoteSlots{
-                slot.image = UIImage(named: "v_None")
-            }
-            composedNoteList[i].clearNote()
-        }
-        
-    }
-    
-    func playSong() {
-        composedNoteList[0].playSong()
-    }
-
-    func handleTap(_ recognizer: UITapGestureRecognizer){
-        guard let view = recognizer.view else {
-            print("cannot unwrap in function handleTap")
-            return
-        }
-        
-        print("slot tapped")
-        let noteSlot = view as! NoteSlots
-        let index = noteSlot.tag % 100
-        switch noteSlot.instrument! {
-        case .Trombone:
-            composedNoteList[index].tNote = composedNoteList[index].tNone
-            noteSlot.image = UIImage(named: "t_None")
-            break
-        case .Saxphone:
-            composedNoteList[index].sNote = composedNoteList[index].sNone
-            noteSlot.image = UIImage(named: "s_None")
-            break
-        case .Drum:
-            composedNoteList[index].dNote = composedNoteList[index].dNone
-            noteSlot.image = UIImage(named: "d_None")
-            break
-        case .Violin:
-            composedNoteList[index].vNote = composedNoteList[index].vNone
-            noteSlot.image = UIImage(named: "v_None")
-            break
-        default:
-            break
-        }
-    }
-    
-    func showSheetMusicPage() {
-        self.backgroundColor = UIColor.black
-        sheetMusicPage.alpha = 1
-    }
-
-    func hideSheetMusicPage() {
-        sheetMusicPage.alpha = 0
-        self.backgroundColor = UIColor.clear
     }
 }
 

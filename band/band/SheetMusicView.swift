@@ -8,8 +8,12 @@
 
 import UIKit
 
+//Define a subclass of UIImageView, showing the sheet music of the song "twinkle twinkle little star"
+//So that the user can orchestrate the bunnies to play this song
+
 class SheetMusicView: UIImageView {
     
+    //MARK: Variables
     var infoButton: UIButton!
     var tromboneButton: UIButton!
     var drumButton: UIButton!
@@ -17,14 +21,16 @@ class SheetMusicView: UIImageView {
     var saxphoneButton: UIButton!
     var doneButton: UIButton!
     let darkGrey = UIColor(red: 30/255, green: 30/255, blue: 30/255, alpha: 1)
+    
+    //MARK: Initializer
     init() {
         super.init(frame: CGRect(x: 0.0 , y: 160.0, width: size.screenWidth.rawValue, height: 342.0))
         self.image = UIImage(named: "sheetMusicIntro")
         self.isUserInteractionEnabled = true
         setUp()
-        
     }
     
+    //Initializes all images and buttons for the view
     func setUp() {
         infoButton = UIButton(frame: CGRect(x: 0.0 , y: 0.0, width: 68.5, height: 68.5))
         violinButton = UIButton(frame: CGRect(x: 0.0 , y: 68.5, width: 68.5, height: 68.5))
@@ -67,6 +73,10 @@ class SheetMusicView: UIImageView {
         self.addSubview(doneButton)
     }
     
+    
+    //MARK: UIButton action
+    
+    //Show the music sheet of different instruments depending on which button the users tapped
     func buttonTapped(_ button: UIButton) {
         infoButton.backgroundColor = UIColor.black
         violinButton.backgroundColor = UIColor.black
@@ -100,6 +110,7 @@ class SheetMusicView: UIImageView {
         }
     }
     
+    //Hides the view when the user taps the done button
     func doneButtonTapped(_ button: UIButton){
         self.alpha = 0
         self.superview?.backgroundColor = UIColor.clear

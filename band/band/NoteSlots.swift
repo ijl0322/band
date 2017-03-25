@@ -8,8 +8,12 @@
 
 import UIKit
 
+//Defines a subclass of an UIImageView, representing an empty slot that can hold a single note of 
+//a particular instrument. The user can drag notes into the slots to compose music.
+
 class NoteSlots: UIImageView, UIGestureRecognizerDelegate {
     
+    //MARK: Variables
     let noteSize = size.noteSize.rawValue
     var instrument: Instruments!
     
@@ -17,10 +21,10 @@ class NoteSlots: UIImageView, UIGestureRecognizerDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: Initializer
     init(x: Double, y: Double) {
         super.init(frame: CGRect(x: x , y: y, width: noteSize, height: noteSize))
         self.instrument = Instruments.None
         self.isUserInteractionEnabled = true
     }
-
 }
