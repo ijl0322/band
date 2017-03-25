@@ -33,17 +33,17 @@ class InfoView: UIView {
         self.info3.image = UIImage(named: "info3")
         self.info3.isUserInteractionEnabled = true
         
-        self.nextButton1 = UIButton(frame: CGRect(x: 690.0 , y: 515.0, width: 77, height: 44))
+        self.nextButton1 = UIButton(frame: CGRect(x: 690.0 , y: 525.0, width: 77, height: 44))
         self.nextButton1.addTarget(self, action: #selector(buttonTapped), for: UIControlEvents.touchUpInside)
         self.nextButton1.tag = 1
         self.nextButton1.setImage(UIImage(named: "nextButton"), for: .normal)
         
-        self.nextButton2 = UIButton(frame: CGRect(x: 690.0 , y: 515.0, width: 77, height: 44))
+        self.nextButton2 = UIButton(frame: CGRect(x: 690.0 , y: 525.0, width: 77, height: 44))
         self.nextButton2.addTarget(self, action: #selector(buttonTapped), for: UIControlEvents.touchUpInside)
         self.nextButton2.tag = 2
         self.nextButton2.setImage(UIImage(named: "nextButton"), for: .normal)
         
-        self.okButton = UIButton(frame: CGRect(x: 690.0 , y: 515.0, width: 77, height: 44))
+        self.okButton = UIButton(frame: CGRect(x: 690.0 , y: 525.0, width: 77, height: 44))
         self.okButton.addTarget(self, action: #selector(buttonTapped), for: UIControlEvents.touchUpInside)
         self.okButton.tag = 3
         self.okButton.setImage(UIImage(named: "okButton"), for: .normal)

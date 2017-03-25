@@ -14,6 +14,7 @@ class ViewController: UIViewController, MusicStatusDelegate {
     var editPannel: EditPannel?
     var tempEditPannel: EditPannel?
     let band = Band()
+    let sheetMusicButton = UIButton(frame: CGRect(x: 560.0 , y: 540.0, width: 60.0, height: 60.0))
     let infoButton = UIButton(frame: CGRect(x: 620.0 , y: 540.0, width: 60.0, height: 60.0))
     let playButton = UIButton(frame: CGRect(x: 680.0 , y: 540.0, width: 60.0, height: 60.0))
     let clearButton = UIButton(frame: CGRect(x: 740.0 , y: 540.0, width: 60.0, height: 60.0))
@@ -24,6 +25,7 @@ class ViewController: UIViewController, MusicStatusDelegate {
     let splashScreenImage = UIImageView(frame: CGRect(x: 0, y: 0, width: 800, height: 600))
     let startButton = UIButton(frame: CGRect(x: 620.0 , y: 500.0, width: 100.0, height: 100.0))
     let infoPage = InfoView()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,10 +64,18 @@ class ViewController: UIViewController, MusicStatusDelegate {
             self.view.addSubview(self.band)
             self.view.addSubview(self.editPannel!)
             self.addButtons()
+            self.view.addSubview(self.infoPage)
+            self.infoPage.showInfo()
+            
         }
     }
     
     func addButtons() {
+        
+        sheetMusicButton.setImage(UIImage(named: "sheetMusicButton"), for: .normal)
+        sheetMusicButton.addTarget(self, action: #selector(sheetMusicButton(_:)), for: UIControlEvents.touchUpInside)
+        self.view.addSubview(sheetMusicButton)
+        
         playButton.setImage(UIImage(named: "playButton"), for: .normal)
         playButton.addTarget(self, action: #selector(playButton(_:)), for: UIControlEvents.touchUpInside)
         self.view.addSubview(playButton)
@@ -88,7 +98,9 @@ class ViewController: UIViewController, MusicStatusDelegate {
     func playButton(_ button: UIButton!) {
         band.startBand()
         playButton.isEnabled = false
+        clearButton.isEnabled = false
         self.playButton.alpha = 0.5
+        self.clearButton.alpha = 0.5
         self.snowView.alpha = 1
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
             self.editPannel!.playSong()
@@ -97,6 +109,10 @@ class ViewController: UIViewController, MusicStatusDelegate {
     
     func clearButton(_ button: UIButton!) {
         editPannel!.clearAll()
+    }
+    
+    func sheetMusicButton(_ button: UIButton!) {
+        editPannel!.showSheetMusicPage()
     }
     
     func musicEnded() {
@@ -108,6 +124,8 @@ class ViewController: UIViewController, MusicStatusDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
             self.playButton.isEnabled = true
             self.playButton.alpha = 1
+            self.clearButton.isEnabled = true
+            self.clearButton.alpha = 1
         }
     }
     

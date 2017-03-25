@@ -55,6 +55,7 @@
 		0E50D9DD1E8465EF009C8E3C /* SharedNoneNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50D9DC1E8465EF009C8E3C /* SharedNoneNotes.swift */; };
 		0E50D9DF1E84B2B9009C8E3C /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50D9DE1E84B2B9009C8E3C /* InfoView.swift */; };
 		0E5F0F5D1E83424E00C32CA8 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5F0F5C1E83424E00C32CA8 /* SplashScreen.swift */; };
+		0E5F95211E85E4360044EC44 /* SheetMusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5F95201E85E4360044EC44 /* SheetMusicView.swift */; };
 		0E691DC01E7F14E7000B761A /* EditPannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E691DBF1E7F14E7000B761A /* EditPannel.swift */; };
 		0E691DC21E7F49B3000B761A /* DrumNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E691DC11E7F49B3000B761A /* DrumNotes.swift */; };
 		0E691DCB1E7F4A62000B761A /* DrumNoteButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E691DCA1E7F4A62000B761A /* DrumNoteButtons.swift */; };
@@ -142,6 +143,7 @@
 		0E50D9DC1E8465EF009C8E3C /* SharedNoneNotes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedNoneNotes.swift; sourceTree = "<group>"; };
 		0E50D9DE1E84B2B9009C8E3C /* InfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		0E5F0F5C1E83424E00C32CA8 /* SplashScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		0E5F95201E85E4360044EC44 /* SheetMusicView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SheetMusicView.swift; sourceTree = "<group>"; };
 		0E691DBF1E7F14E7000B761A /* EditPannel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPannel.swift; sourceTree = "<group>"; };
 		0E691DC11E7F49B3000B761A /* DrumNotes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrumNotes.swift; sourceTree = "<group>"; };
 		0E691DCA1E7F4A62000B761A /* DrumNoteButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrumNoteButtons.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 				0EEBC1431E7B4CE500E473D0 /* Notes.swift */,
 				0E274B891E8079820050E394 /* Band.swift */,
 				0E691DBF1E7F14E7000B761A /* EditPannel.swift */,
+				0E5F95201E85E4360044EC44 /* SheetMusicView.swift */,
 				0EEBC14B1E7B62D400E473D0 /* NoteButtons.swift */,
 				0E3673FF1E7C7B57004C4E9F /* NoteSlots.swift */,
 				0E2150961E7DE57C0011497F /* ComposedNotes.swift */,
@@ -484,6 +487,7 @@
 				0E3674041E7C8097004C4E9F /* Instruments.swift in Sources */,
 				0E3673FE1E7C7838004C4E9F /* TromboneNoteButtons.swift in Sources */,
 				0E691DC21E7F49B3000B761A /* DrumNotes.swift in Sources */,
+				0E5F95211E85E4360044EC44 /* SheetMusicView.swift in Sources */,
 				0E691DCB1E7F4A62000B761A /* DrumNoteButtons.swift in Sources */,
 				0E274B671E7F62DE0050E394 /* SaxphoneNoteButtons.swift in Sources */,
 			);

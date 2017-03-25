@@ -26,10 +26,13 @@ class EditPannel: UIView {
     let bigControlButtonSize = size.controlButtonSize.rawValue
     let controlButtonSize = size.controlButtonSize.rawValue/2
     let song = Songs()
+    let sheetMusicPage = SheetMusicView()
     
     init(){
         super.init(frame: CGRect(x: 0.0 , y: 0.0, width: size.screenWidth.rawValue, height: size.screenHeight.rawValue))
         //self.backgroundColor = UIColor.black
+        self.addSubview(sheetMusicPage)
+        sheetMusicPage.alpha = 0
         addTromboneSlots()
         addSaxphoneSlots()
         addDrumSlots()
@@ -456,6 +459,14 @@ class EditPannel: UIView {
             break
         }
     }
+    
+    func showSheetMusicPage() {
+        self.backgroundColor = UIColor.black
+        sheetMusicPage.alpha = 1
+    }
 
+    func hideSheetMusicPage() {
+        self.backgroundColor = UIColor.clear
+    }
 }
 
