@@ -41,23 +41,23 @@ class Band: UIView {
     }
     
     func addBunnies() {
-        tromboneBunny = UIImageView(frame: CGRect(x: 0.0 , y: 15.0, width: 250.0, height: 400.0))
+        tromboneBunny = UIImageView(frame: CGRect(x: 0.0 , y: 55.0, width: 250.0, height: 250.0))
         tromboneBunny.image = UIImage(named: "t_bunny")
         tromboneBunny.contentMode = .scaleAspectFit
         self.addSubview(tromboneBunny)
         
-        violinBunny = UIImageView(frame: CGRect(x: 180.0 , y: 0.0, width: 275.0, height: 400.0))
+        violinBunny = UIImageView(frame: CGRect(x: 180.0 , y: 30.0, width: 275.0, height: 275.0))
         violinBunny.image = UIImage(named: "v_bunny")
         violinBunny.contentMode = .scaleAspectFit
         self.addSubview(violinBunny)
         
         
-        drumBunny = UIImageView(frame: CGRect(x: 400.0 , y: 0.0, width: 250.0, height: 400.0))
+        drumBunny = UIImageView(frame: CGRect(x: 400.0 , y: 40.0, width: 250.0, height: 250.0))
         drumBunny.image = UIImage(named: "d_bunny")
         drumBunny.contentMode = .scaleAspectFit
         self.addSubview(drumBunny)
         
-        saxphoneBunny = UIImageView(frame: CGRect(x: 550.0 , y: 15.0, width: 250.0, height: 400.0))
+        saxphoneBunny = UIImageView(frame: CGRect(x: 550.0 , y: 55.0, width: 250.0, height: 250.0))
         saxphoneBunny.image = UIImage(named: "s_bunny")
         saxphoneBunny.contentMode = .scaleAspectFit
         self.addSubview(saxphoneBunny)

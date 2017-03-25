@@ -20,7 +20,7 @@ class LightingView: UIView {
         emitter.emitterShape = kCAEmitterLayerRectangle
         
         let cell = CAEmitterCell()
-        cell.contents = UIImage(named: "Sparkle.png")!.cgImage
+        cell.contents = UIImage(named: "sparkle.png")!.cgImage
         cell.birthRate = 10
         cell.speed = 2.0
         cell.lifetime = 10
