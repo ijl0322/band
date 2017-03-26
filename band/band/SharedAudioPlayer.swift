@@ -7,13 +7,15 @@
 //
 
 import AVFoundation
+
+//Defines a singleton, an audio player shared by all note buttons.
 class SharedAudioPlayer {
     
-    // Static class variable
+    //MARK: Variables
     static let player = SharedAudioPlayer()
     var audioFile: AVAudioPlayer!
     
-    /// This prevents others from using the default '()' initializer for this class.
+    //MARK: Initializer
     private init() {}
     
     func playNote(name: String) {

@@ -85,6 +85,7 @@ class ComposedNotes {
         }
     }
     
+    //Set the notes of all instruments to None
     func clearNote() {
         tNote = tNone
         dNote = dNone

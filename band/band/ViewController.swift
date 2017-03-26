@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class ViewController: UIViewController, MusicStatusDelegate, InfoViewStatus {
+class ViewController: UIViewController, MusicStatusDelegate, InfoViewDelegate {
 
     //MARK: Variables
     var editPannel: EditPannel?
@@ -22,6 +22,7 @@ class ViewController: UIViewController, MusicStatusDelegate, InfoViewStatus {
     let clearButton = UIButton(frame: CGRect(x: 740.0 , y: 540.0, width: 60.0, height: 60.0))
     
     let stage = UIImageView(frame: CGRect(x: 0, y: 0, width: 800, height: 600))
+    var isFirstLaunch = true
     
     let lightingView = LightingView()
     let splashScreen = SplashScreen()
@@ -85,6 +86,7 @@ class ViewController: UIViewController, MusicStatusDelegate, InfoViewStatus {
     //Gets called when the edit pannel is done loading and the user taps start.
     //Adds all appropriate subviews, and show the info page.
     func startButton(_ button: UIButton) {
+        startButton.removeFromSuperview()
         splashScreen.removeSplashScreen()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.3) {
             self.splashScreen.removeFromSuperview()
@@ -141,6 +143,10 @@ class ViewController: UIViewController, MusicStatusDelegate, InfoViewStatus {
             self.playButton.alpha = 1
             self.clearButton.isEnabled = true
             self.clearButton.alpha = 1
+            if self.isFirstLaunch{
+                self.editPannel?.showYourTurnPage()
+                self.isFirstLaunch = false
+            }
         }
     }
     

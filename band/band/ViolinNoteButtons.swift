@@ -8,8 +8,10 @@
 
 import UIKit
 
+//Defines a subclass of NoteButtons, which can only be a note button for the violin.
 class ViolinNoteButtons: NoteButtons {
     
+    //MARK: Initializer
     required override init(name: String, x: Double, y: Double) {
         super.init(name: name, x: x, y: y)
         self.fullName = "v_" + name

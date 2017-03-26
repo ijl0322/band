@@ -20,6 +20,7 @@ class SheetMusicView: UIImageView {
     var violinButton: UIButton!
     var saxphoneButton: UIButton!
     var doneButton: UIButton!
+    var yourTurnPage: UIImageView!
     let darkGrey = UIColor(red: 30/255, green: 30/255, blue: 30/255, alpha: 1)
     
     //MARK: Initializer
@@ -38,6 +39,7 @@ class SheetMusicView: UIImageView {
         saxphoneButton = UIButton(frame: CGRect(x: 0.0 , y: 205.5, width: 68.5, height: 68.5))
         tromboneButton = UIButton(frame: CGRect(x: 0.0 , y: 274.0, width: 68.5, height: 68.5))
         doneButton = UIButton(frame: CGRect(x: 680.0 , y: 274.0, width: 92.0, height: 44.0))
+        yourTurnPage = UIImageView(frame: CGRect(x: 0.0 , y: 0.0, width: size.screenWidth.rawValue, height: 342.0))
         
         infoButton.setImage(UIImage(named: "sheetMusicButton_info"), for: .normal)
         tromboneButton.setImage(UIImage(named: "sheetMusicButton_t"), for: .normal)
@@ -45,6 +47,7 @@ class SheetMusicView: UIImageView {
         violinButton.setImage(UIImage(named: "sheetMusicButton_v"), for: .normal)
         saxphoneButton.setImage(UIImage(named: "sheetMusicButton_s"), for: .normal)
         doneButton.setImage(UIImage(named: "sheetMusicButton_done"), for: .normal)
+        yourTurnPage.image = UIImage(named: "yourTurn")
         
         infoButton.backgroundColor = darkGrey
         violinButton.backgroundColor = UIColor.black
@@ -73,6 +76,17 @@ class SheetMusicView: UIImageView {
         self.addSubview(doneButton)
     }
     
+    
+    //MARK: Control Functions
+    func showYourTurnPage() {
+        yourTurnPage.isUserInteractionEnabled = true
+        let okButton = UIButton(frame: CGRect(x: 680.0 , y: 274.0, width: 92.0, height: 44.0))
+        okButton.setImage(UIImage(named: "okButton"), for: .normal)
+        okButton.addTarget(self, action: #selector(okButtonTapped), for: UIControlEvents.touchUpInside)
+        okButton.tag = 6
+        yourTurnPage.addSubview(okButton)
+        self.addSubview(yourTurnPage)
+    }
     
     //MARK: UIButton action
     
@@ -116,6 +130,12 @@ class SheetMusicView: UIImageView {
         self.superview?.backgroundColor = UIColor.clear
     }
     
+    func okButtonTapped(_ button: UIButton){
+        self.alpha = 0
+        self.superview?.backgroundColor = UIColor.clear
+        print("your turn page removed")
+        yourTurnPage.removeFromSuperview()
+    }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

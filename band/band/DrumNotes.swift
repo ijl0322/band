@@ -8,7 +8,10 @@
 
 import UIKit
 
+//Defines a subclass of Notes, which can only represent a note of the drum.
 class DrumNotes: Notes {
+    
+    //MARK: Initializer
     required init(name: String) {
         let newName = "d_" + name
         print("\(newName)")

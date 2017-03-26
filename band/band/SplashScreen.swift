@@ -8,7 +8,10 @@
 
 import UIKit
 
+//Defines a subclass of an UIView, representing the splash screen of the project
 class SplashScreen: UIView {
+    
+    //MARK: Variables
     var bandLogo: UIImageView!
     var signature: UIImageView!
     var violinBunny: UIImageView!
@@ -18,9 +21,14 @@ class SplashScreen: UIView {
     var loadingLabel: UILabel!
     var loadingEnded = false
 
+    //MARK: Initializer
     init() {
         super.init(frame: CGRect(x: 0.0 , y: 0.0, width: size.screenWidth.rawValue, height: size.screenHeight.rawValue))
         setUp()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func setUp() {
@@ -61,45 +69,26 @@ class SplashScreen: UIView {
         
     }
     
-    func animateLogo() {
-        UIView.animate(withDuration: 1, animations: {
-            self.bandLogo.center.y = 273
-        }, completion: {(finish: Bool) in
-            UIView.animate(withDuration: 0.4, animations: {
-              self.bandLogo.transform = CGAffineTransform(rotationAngle: (-15.0 * CGFloat(M_PI)) / 180.0)
-            }, completion: { (finish: Bool) in UIView.animate(withDuration: 0.3, animations: {
-                self.bandLogo.transform = CGAffineTransform(rotationAngle: (10.0 * CGFloat(M_PI)) / 180.0)
-            }, completion: {(finish: Bool) in UIView.animate(withDuration: 0.2, animations: {
-                self.bandLogo.transform = CGAffineTransform(rotationAngle: (0.0 * CGFloat(M_PI)) / 180.0)
-            }, completion: {(finish: Bool) in UIView.animate(withDuration: 0.2, animations: {
-                self.signature.center.y = 168
-            }, completion: {(finish: Bool) in UIView.animate(withDuration: 1, delay: 1.5, animations: {
-                self.bandLogo.center.y = 173
-                self.signature.center.y = 68
-            }, completion: {(finish: Bool) in UIView.animate(withDuration: 1.5, animations: {
-                self.violinBunny.center.x = 317.5
-            }, completion: {(finish: Bool) in UIView.animate(withDuration: 1.5, animations: {
-                self.drumBunny.center.x = 525.0
-            }, completion: {(finish: Bool) in UIView.animate(withDuration: 1, animations: {
-                self.tromboneBunny.center.x = 125.0
-            }, completion: {(finish: Bool) in UIView.animate(withDuration: 1, animations: {
-                self.saxphoneBunny.center.x = 675.0
-            }, completion:{(finish: Bool) in
-                self.showLoadingLabel()})})})})})})})})})
-        })
-    }
+    //MARK: Control Functions
     
+    //The program will load things in the backbround thread when showing the splash screen
+    //The splashscreen will show the loadingLabel when it is loading. 
+    //This function hides the loading label when loading is done.
     func endLoading(){
         loadingEnded = true
         loadingLabel.alpha = 0
     }
     
+    //Shows the loadingLabel
     func showLoadingLabel() {
         if !loadingEnded {
             loadingLabel.alpha = 1
         }
     }
     
+    //MARK: Animations
+    
+    //Animates the bunnies and logo off the splash screen before it gets removed
     func removeSplashScreen() {
         UIView.animate(withDuration: 1, animations: {
             self.bandLogo.center.y = -128
@@ -113,7 +102,32 @@ class SplashScreen: UIView {
         }, completion: nil)})})
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    //Animate the logo and the bunnies onto the splash screen
+    func animateLogo() {
+        UIView.animate(withDuration: 1, delay: 0.2, animations: {
+            self.bandLogo.center.y = 273
+        }, completion: {(finish: Bool) in
+            UIView.animate(withDuration: 0.4, animations: {
+              self.bandLogo.transform = CGAffineTransform(rotationAngle: (-15.0 * CGFloat(M_PI)) / 180.0)
+            }, completion: { (finish: Bool) in UIView.animate(withDuration: 0.3, animations: {
+                self.bandLogo.transform = CGAffineTransform(rotationAngle: (10.0 * CGFloat(M_PI)) / 180.0)
+            }, completion: {(finish: Bool) in UIView.animate(withDuration: 0.2, animations: {
+                self.bandLogo.transform = CGAffineTransform(rotationAngle: (0.0 * CGFloat(M_PI)) / 180.0)
+            }, completion: {(finish: Bool) in UIView.animate(withDuration: 0.2, animations: {
+                self.signature.center.y = 168
+            }, completion: {(finish: Bool) in UIView.animate(withDuration: 1, delay: 1.2, animations: {
+                self.bandLogo.center.y = 173
+                self.signature.center.y = 68
+            }, completion: {(finish: Bool) in UIView.animate(withDuration: 1.5, animations: {
+                self.violinBunny.center.x = 317.5
+            }, completion: {(finish: Bool) in UIView.animate(withDuration: 1.5, animations: {
+                self.drumBunny.center.x = 525.0
+            }, completion: {(finish: Bool) in UIView.animate(withDuration: 1, animations: {
+                self.tromboneBunny.center.x = 125.0
+            }, completion: {(finish: Bool) in UIView.animate(withDuration: 1, animations: {
+                self.saxphoneBunny.center.x = 675.0
+            }, completion:{(finish: Bool) in
+                self.showLoadingLabel()})})})})})})})})})
+        })
     }
 }

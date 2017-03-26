@@ -8,7 +8,10 @@
 
 import UIKit
 
+//Defines a subclass of Notes, which can only represent a note of the saxphone.
 class SaxphoneNotes: Notes {
+    
+    //MARK: Initializer
     required init(name: String) {
         let newName = "s_" + name
         print("\(newName)")

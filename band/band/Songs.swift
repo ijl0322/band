@@ -8,8 +8,11 @@
 
 import UIKit
 
+//Defines a class that represents songs. 
+//This allows the program to preload songs into the edit pannel without the user composing the song
 class Songs {
     
+    //MARK: Variables
     let tNotes = ["Mi_h", "Mi_h", "Fa_h", "So_h", "None",
                   "So_h", "Fa_h", "Mi_h", "Re_h", "None",
                   "Do_h", "Do_h", "Re_h", "Mi_h", "None",
@@ -27,9 +30,13 @@ class Songs {
                   "Do_h", "Do_h", "Re_h", "Mi_h", "None",
                   "Mi_h", "None", "Re_h", "Re_h", "None"]
 
+    //MARK: Initializer
     init(){
 
     }
+    
+    //Returns an array of composed notes, representing Beethoven's famous composition - Symphony No. 9
+    // (ode to Joy)
     
     func odeToJoy() -> [ComposedNotes]{
         var notes: [ComposedNotes] = []
@@ -44,18 +51,26 @@ class Songs {
         return notes
     }
     
+    //Return an array of string(name of notes) of the instrument trombone.
+    //For the song ode to joy.
     func odeToJoyTrombone() -> [String] {
         return self.tNotes
     }
     
+    //Return an array of string(name of notes) of the instrument drum.
+    //For the song ode to joy.
     func odeToJoyDrum() -> [String] {
         return self.dNotes
     }
     
+    //Return an array of string(name of notes) of the instrument saxphone.
+    //For the song ode to joy.
     func odeToJoySaxphone() -> [String] {
         return self.sNotes
     }
     
+    //Return an array of string(name of notes) of the instrument violin.
+    //For the song ode to joy.
     func odeToJoyViolin() -> [String] {
         return self.vNotes
     }

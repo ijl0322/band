@@ -65,12 +65,20 @@ class EditPannel: UIView {
     func showSheetMusicPage() {
         self.backgroundColor = UIColor.black
         sheetMusicPage.alpha = 1
+        sheetMusicPage.yourTurnPage.alpha = 0
     }
     
     //Hide the sheet music page
     func hideSheetMusicPage() {
         sheetMusicPage.alpha = 0
         self.backgroundColor = UIColor.clear
+    }
+    
+    //Show the it's your turn page prompting the user to start composing a new song
+    func showYourTurnPage() {
+        sheetMusicPage.alpha = 1
+        sheetMusicPage.showYourTurnPage()
+        self.backgroundColor = UIColor.black
     }
     
     //Clear all notes in the slots, allowing the user to start a new song

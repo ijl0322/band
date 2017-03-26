@@ -8,8 +8,10 @@
 
 import UIKit
 
+//Defines a subclass of NoteSlots, which only holds trombone notes.
 class TromboneSlots: NoteSlots {
     
+    //MARK: Initializer
     override required init(x: Double, y: Double) {
         super.init(x: x, y: y)
         self.instrument = Instruments.Trombone

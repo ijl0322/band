@@ -7,10 +7,11 @@
 //
 
 import UIKit
-//import QuartzCore
 
+//Defines a subclass of UIView that represents the lighting effects on stage.
 class LightingView: UIView {
     
+    //MARK: Initializer
     init() {
         super.init(frame: CGRect(x: 0, y: 0, width: 800, height: 600))
         

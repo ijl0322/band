@@ -8,7 +8,10 @@
 
 import UIKit
 
+//Defines a subclass of Notes, which can only represent a note of the violin.
 class ViolinNotes: Notes {
+    
+    //MARK: Initializer
     required init(name: String) {
         let newName = "v_" + name
         print("\(newName)")

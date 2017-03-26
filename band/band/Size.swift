@@ -7,6 +7,8 @@
 //
 
 import Foundation
+
+//An enumeration defining different sizes used by the project
 enum size: Double {
     case screenWidth = 800.0
     case screenHeight = 600.0

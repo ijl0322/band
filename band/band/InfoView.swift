@@ -6,14 +6,19 @@
 //  Copyright © 2017 Isabel  Lee. All rights reserved.
 //
 
-protocol InfoViewStatus: class {
+//A protocol to pass information that the user has dismissed the infoView, and should start the performance.
+protocol InfoViewDelegate: class {
     func startPerformance() -> Void
 }
 
 import UIKit
+
+//Defines a subclass of a UIView that represents a information view that shows the "how to" informations
+//to the user
 class InfoView: UIView {
     
-    weak var delegate: InfoViewStatus?
+    //MARK: Variables
+    weak var delegate: InfoViewDelegate?
     var info1: UIImageView!
     var info2: UIImageView!
     var info3: UIImageView!
@@ -23,12 +28,23 @@ class InfoView: UIView {
     var okButton: UIButton!
     var okButton2: UIButton!
     var isFirstLauch = true
+    
+    //MARK: Initializer
     init() {
         super.init(frame: CGRect(x: 0.0 , y: 0.0, width: size.screenWidth.rawValue, height: size.screenHeight.rawValue))
-        setUp()
+        infoPageSetUp()
+        buttonsSetUp()
     }
     
-    func setUp() {
+    //MARK: Control functions
+    func showInfo() {
+        self.addSubview(info3)
+        self.addSubview(info2)
+        self.addSubview(info1)
+    }
+    
+    //MARK: Set up functions
+    func infoPageSetUp() {
         self.info1 = UIImageView(frame: CGRect(x: 0.0 , y: 0.0, width: size.screenWidth.rawValue, height: size.screenHeight.rawValue))
         self.info1.image = UIImage(named: "info1")
         self.info1.isUserInteractionEnabled = true
@@ -45,7 +61,10 @@ class InfoView: UIView {
         self.info4.image = UIImage(named: "info4")
         self.info4.isUserInteractionEnabled = true
         
-        
+        self.addSubview(info4)
+    }
+    
+    func buttonsSetUp() {
         self.nextButton1 = UIButton(frame: CGRect(x: 690.0 , y: 525.0, width: 77, height: 44))
         self.nextButton1.addTarget(self, action: #selector(buttonTapped), for: UIControlEvents.touchUpInside)
         self.nextButton1.tag = 1
@@ -70,8 +89,6 @@ class InfoView: UIView {
         self.info2.addSubview(nextButton2)
         self.info3.addSubview(okButton)
         self.info4.addSubview(okButton2)
-        
-        self.addSubview(info4)
     }
 
     func buttonTapped(_ button: UIButton!) {
@@ -97,12 +114,6 @@ class InfoView: UIView {
         default:
             break
         }
-    }
-    
-    func showInfo() {
-        self.addSubview(info3)
-        self.addSubview(info2)
-        self.addSubview(info1)
     }
     
     required init?(coder aDecoder: NSCoder) {

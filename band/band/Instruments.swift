@@ -8,6 +8,7 @@
 
 import Foundation
 
+//Defines an enumeration representing different types of instruments in the band
 enum Instruments {
     case Trombone
     case Saxphone
